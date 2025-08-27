@@ -14,6 +14,7 @@ function App() {
       <h1>Hello</h1>
       <Routes>
         <Route path='/' element={<  Home/>} />
+        
       </Routes>
       </main>
       <NavBar />
