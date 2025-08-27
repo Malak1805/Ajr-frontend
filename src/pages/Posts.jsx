@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useEffect } from "react"
 
-const Posts = () => {
+const Posts = ({ posts }) => {
   const staticPosts = [
     {
       _id: '1',

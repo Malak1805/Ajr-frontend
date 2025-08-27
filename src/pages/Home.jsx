@@ -1,12 +1,15 @@
 import AddPost from "../components/AddPost"
 import Posts from "./Posts"
 
-const Home = () => {
+const Home = ({ posts }) => {
   return(
   <>
   <h1>Donation Posts!</h1>
-  <Posts />
-  <AddPost />
+  <Link to='/posts/new'>
+  Create a Donation Post!
+  </Link>
+  <Posts posts={posts}/>
+  
   </>
   )
 }
