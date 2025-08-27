@@ -16,6 +16,7 @@ function App() {
       <NavBar />
       <Routes>
         <Route path='/' element={<  Home/>} />
+        <Route path='/posts/new' element={<AddPost />} />
         <Route path='/posts' element={<Posts />} />
          <Route path='/auth/register' element={<RegisterForm />} />
           <Route path='/auth/login' element={<LoginForm />} />
