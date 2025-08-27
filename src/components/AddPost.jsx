@@ -2,42 +2,61 @@ import Posts from '../pages/Posts'
 import { useState } from 'react'
 import Home from '../pages/Home'
 import { useNavigate } from 'react-router'
+import axios from 'axios'
 
 const AddPost = ({ setPosts }) => {
   const navigate = useNavigate()
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [goalAmount, setGoalAmount] = useState('')
-
-const handlePostSubmit = (e) => {
+  const [error, setError] = useState(null);
+  
+   const handleAddPost = async (e) => {
     e.preventDefault();
+    try {
+      const newPost = {
+        title: title,
+        description: description,
+        goal_amount: Number(goalAmount),
+      };
 
-    const newPost = {
-      _id: `temp-${Date.now()}`,
-      title: title,
-      description: description,
-      goal_amount: parseInt(goalAmount, 10),
-      userId: {
-        first_name: 'New',
-        last_name: 'User'
+
+      const token = localStorage.getItem('token');
+      if (!token) {
+        setError('You must be logged in to create a post.');
+        return;
       }
+
+
+      const response = await axios.post(
+        'http://localhost:3000/posts', 
+        newPost,
+        {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        }
+      )
+
+
+      const createdPost = response.data;
+
+      setPosts((prevPosts) => [createdPost, ...prevPosts]);
+
+
+      navigate('/posts');
+    } catch (err) {
+      console.error('Failed to add post:', err.response ? err.response.data : err.message);
+      setError(err.response ? err.response.data.msg : 'An unexpected error occurred.');
     }
-
-    setPosts(prevPosts => [...prevPosts, newPost])
-
-    setTitle('')
-    setDescription('')
-    setGoalAmount('')
-
-    navigate('/')
-  }
+  };
 
   return (
     <>
       <div>
         <div>
           <h1>Create a New Post</h1>
-          <form onSubmit={handlePostSubmit}>
+          <form onSubmit={handleAddPost}>
             <div className="adding-post-container">
               <label htmlFor="title">Title</label>
               <input
