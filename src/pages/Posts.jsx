@@ -32,6 +32,36 @@ const Posts = () => {
         first_name: 'Peter',
         last_name: 'Jones'
       }
+    },
+    {
+          _id: '4',
+      title: 'Hearing aids for a chile with severe Hearing loss',
+      description: 'A young child with severe hearing loss needs a hearing aid to communicate, learn, and grow. Your generosity can open up their world to sound, education, and social connection.',
+      goal_amount: 5000,
+      userId: {
+        first_name: 'Hope',
+        last_name: 'Foundation'
+      }
+    },
+    {
+      _id: '5',
+      title: 'Medical Support for an Elderly Patient\'s Dialysis',
+      description: 'An elderly woman is in urgent need of financial assistance to cover her life-saving kidney dialysis treatments. Your donation will directly support her medical care and improve her quality of life.',
+      goal_amount: 800,
+      userId: {
+        first_name: 'Future',
+        last_name: 'Smiles'
+      }
+    },
+    {
+      _id: '6',
+      title: 'Emergency Shelter for Families Affected by Fire',
+      description: 'Provide immediate support to families who have lost their homes and belongings in recent fires. Your donation will help with emergency housing, food, and essential supplies to help them rebuild their lives.',
+      goal_amount: 1200,
+      userId: {
+        first_name: 'Community',
+        last_name: 'United'
+      }
     }
   ];
 
@@ -42,8 +72,8 @@ const Posts = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const res = await axios.get('http://localhost:3000/posts')
-        setPosts(res.data)
+      setPosts(staticPosts);
+      setError(null);
       } catch (err) {
         console.error('Failed to fetch posts:', err)
         setError('Failed to load posts. Please try again later.')
@@ -81,7 +111,7 @@ const Posts = () => {
   
   return(
     <>
-<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div className="grid">
       {posts.map((post) => (
         <div key={post._id}>
           <h2>{post.title}</h2>

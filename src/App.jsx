@@ -4,6 +4,7 @@ import NavBar from './components/NavBar'
 import './App.css'
 import RegisterForm from './pages/RegisterForm'
 import LoginForm from './pages/LoginForm'
+import Posts from './pages/Posts'
 
 function App() {
 
@@ -11,15 +12,15 @@ function App() {
   return (
     <>
     <main>
-      <h1>Hello</h1>
+      <h1>Place Your Donations Now!</h1>
+      <NavBar />
       <Routes>
         <Route path='/' element={<  Home/>} />
-        
+        <Route path='/posts' element={<Posts />} />
+         <Route path='/auth/register' element={<RegisterForm />} />
+          <Route path='/auth/login' element={<LoginForm />} />
       </Routes>
       </main>
-      <NavBar />
-      <RegisterForm />
-      <LoginForm />
     </>
   )
 }
