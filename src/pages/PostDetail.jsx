@@ -1,0 +1,7 @@
+const PostDetail = () => {
+return(
+  
+)
+
+
+}
