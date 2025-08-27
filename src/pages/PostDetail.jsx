@@ -1,9 +1,10 @@
 
-import Posts from "./Posts";
-  
+import Posts from "./Posts"
+import { useParams ,Link } from "react-router-dom"
+
   const PostDetail = ({ posts }) => {
   const { id } = useParams();
-  const post = posts.find(p => p._id === id);
+  const post = posts.find(p => p._id === id)
 
   if (!post) {
     return <div className="text">Post not found!</div>

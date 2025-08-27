@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useEffect } from "react"
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
 const Posts = ({ posts }) => {
 if (posts.length === 0) {
@@ -17,15 +17,18 @@ if (posts.length === 0) {
 <div className="grid">
       {posts.map((post) => (
         <div key={post._id}>
-          <Link to={`/posts/${post._id}`}></Link>
+          <Link to={`/posts/${post._id}`}>
           <h2>{post.title}</h2>
           <p>{post.description}</p>
           <div className="container-2">
             <span>Goal: ${post.goal_amount}</span>
             <span className="user-info">
-              By: {post.userId.first_name} {post.userId.last_name}
+       {post.userId && (
+                  <span className="name">By: {post.userId.first_name} {post.userId.last_name}</span>
+                )}
             </span>
           </div>
+          </Link>
         </div>
       ))}
     </div>

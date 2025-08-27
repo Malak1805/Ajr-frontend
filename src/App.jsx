@@ -1,4 +1,4 @@
-import  { Routes, Route } from 'react-router'
+import  { Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import NavBar from './components/NavBar'
 import './App.css'
@@ -54,7 +54,7 @@ const [posts, setPosts] = useState([
     },
     {
       _id: '5',
-      title: 'Help a Child Hear: Fund a Hearing Aid',
+      title: 'Help a Child With Severe Hear Loss Fund a Hearing Aid',
       description: 'A young child with severe hearing loss needs a hearing aid to communicate, learn, and grow. Your generosity can open up their world to sound, education, and social connection.',
       goal_amount: 3000,
       userId: {
@@ -84,8 +84,8 @@ const [posts, setPosts] = useState([
         <Route path='/posts/new' element={<AddPost setPosts={setPosts} />} />
         <Route path='/posts/:id' element={<PostDetail posts={posts} />} />
         <Route path='/posts' element={<Posts posts={posts} />} />
-         <Route path='/auth/register' element={<RegisterForm />} />
-          <Route path='/auth/login' element={<LoginForm />} />
+        <Route path='/auth/register' element={<RegisterForm />} />
+        <Route path='/auth/login' element={<LoginForm />} />
       </Routes>
       </main>
     </>
