@@ -1,7 +1,8 @@
 # Ajr💙 - Fundraising Platoform💰
 #              **AJR💸**
 
-### [Malak Jasim](https://github.com/Malak1805) | [LinkedIn](https://www.linkedin.com/in/malak-jasim-b518a1295/)
+## Date: 14/08/2025
+### BY: [Malak Jasim](https://github.com/Malak1805) | [LinkedIn](https://www.linkedin.com/in/malak-jasim-b518a1295/)
 ![img3](./img/finalLogo_Nero_AI_Image_Upscaler_Business.png)
 
 is a fundraising platform built using the MERN stack to support low-income individuals and those struggling financially. It provides a secure and easy to use environment where users can create fundraising posts, donate to campaigns, leave supportive comments, and manage their personal profiles.The goal of AJR is to connect donors and recipients, making the fundraising process transparent and accessible.
@@ -52,7 +53,7 @@ is a fundraising platform built using the MERN stack to support low-income indiv
 
 ![img2](./img/Ajr-componentsHierarchy.png)
 
-## **🎨WireFrames🖌️**
+## **🎨WireFrames**
 
 ![img4](./img/Ajr-HomePage-wireframe.png)
 ![img5](./img/Ajr-Post-wireframe.png)
