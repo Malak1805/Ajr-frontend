@@ -1,3 +1,4 @@
+import AddPost from "../components/AddPost"
 import Posts from "./Posts"
 
 const Home = () => {
@@ -5,6 +6,7 @@ const Home = () => {
   <>
   <h1>Donation Posts!</h1>
   <Posts />
+  <AddPost />
   </>
   )
 }

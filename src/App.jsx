@@ -5,6 +5,7 @@ import './App.css'
 import RegisterForm from './pages/RegisterForm'
 import LoginForm from './pages/LoginForm'
 import Posts from './pages/Posts'
+import AddPost from './components/AddPost'
 
 function App() {
 

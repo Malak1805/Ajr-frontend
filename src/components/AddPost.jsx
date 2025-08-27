@@ -1,6 +1,7 @@
 import Posts from '../pages/Posts'
 import { useState } from 'react'
 import Home from '../pages/Home'
+import { useNavigate } from 'react-router'
 
 const AddPost = () => {
   const navigate = useNavigate()
