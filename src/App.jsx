@@ -3,6 +3,7 @@ import Home from './pages/Home'
 import NavBar from './components/NavBar'
 import './App.css'
 import RegisterForm from './pages/RegisterForm'
+import LoginForm from './pages/LoginForm'
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
       </main>
       <NavBar />
       <RegisterForm />
+      <LoginForm />
     </>
   )
 }
