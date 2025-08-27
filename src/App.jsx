@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import  { Routes, Route } from 'react-router'
 import Home from './pages/Home'
 import NavBar from './components/NavBar'
 import './App.css'
+import RegisterForm from './pages/RegisterForm'
 
 function App() {
-  const [count, setCount] = useState(0)
+
 
   return (
     <>
@@ -15,6 +16,7 @@ function App() {
       </Routes>
       </main>
       <NavBar />
+      <RegisterForm />
     </>
   )
 }
