@@ -25,6 +25,7 @@ import Posts from "./Posts";
   )
 }
 
+export default PostDetail
 
 
 

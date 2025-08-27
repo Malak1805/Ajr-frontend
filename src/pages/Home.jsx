@@ -1,5 +1,6 @@
 import AddPost from "../components/AddPost"
 import Posts from "./Posts"
+import { Link } from "react-router"
 
 const Home = ({ posts }) => {
   return(

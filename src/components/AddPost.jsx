@@ -3,25 +3,35 @@ import { useState } from 'react'
 import Home from '../pages/Home'
 import { useNavigate } from 'react-router'
 
-const AddPost = () => {
+const AddPost = ({ setPosts }) => {
   const navigate = useNavigate()
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [goalAmount, setGoalAmount] = useState('')
 
-  const handlePostSubmit = (e) => {
-    e.preventDefault()
+const handlePostSubmit = (e) => {
+    e.preventDefault();
 
-    console.log('New Post Submitted:', {
-      title,
-      description,
-      goalAmount
-    })
+    const newPost = {
+      _id: `temp-${Date.now()}`,
+      title: title,
+      description: description,
+      goal_amount: parseInt(goalAmount, 10),
+      userId: {
+        first_name: 'New',
+        last_name: 'User'
+      }
+    }
 
-    setTimeout(() => {
-      navigate('/')
-    }, 1000)
+    setPosts(prevPosts => [...prevPosts, newPost])
+
+    setTitle('')
+    setDescription('')
+    setGoalAmount('')
+
+    navigate('/')
   }
+
   return (
     <>
       <div>
