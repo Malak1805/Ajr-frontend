@@ -1,14 +1,16 @@
 import { Link } from "react-router"
-
+import '../../src/stylesheets/NavBar.css'
 
 const NavBar = () => {
 return(
   <>
-<Link to='/'>Home</Link>
-<Link to='/about'>About Us</Link>
-<Link to='/donations'>Donations</Link>
-<Link to='/auth/login'>Login</Link>
-<Link to='/auth/register'>Register</Link>
+  <nav className="navbar-container">
+<Link to='/' className="nav-link">Home</Link>
+<Link to='/about' className="nav-link">About Us</Link>
+<Link to='/donations' className="nav-link">Donations</Link>
+<Link to='/auth/login' className="nav-link">Login</Link>
+<Link to='/auth/register' className="nav-link">Register</Link>
+</nav>
   </>
 )
 

@@ -53,7 +53,7 @@ const LoginForm = () => {
       setMessage(errorMessage)
       console.error('Login failed:', error)
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
   }
   }
   return (

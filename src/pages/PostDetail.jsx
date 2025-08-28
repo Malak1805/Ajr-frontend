@@ -23,7 +23,7 @@ const PostDetail = () => {
       setPost(response.data.post); 
       setLoading(false);
     } catch (err) {
-      console.error('Error fetching post details:', err);
+      console.error('Error fetching post details:', err)
       setError('Failed to load post details. Please try again.')
       setLoading(false);
     }
@@ -98,7 +98,7 @@ const PostDetail = () => {
     );
   }
 
-  const progress = (post.current_amount / post.goal_amount) * 100;
+  const progress = (post.current_amount / post.goal_amount) * 100
 
   return (
    <div className='postdetail-container'>
@@ -108,7 +108,8 @@ const PostDetail = () => {
 
     <div className='postdonations'>
       <span>Goal: <span>${post.goal_amount.toFixed(2)}</span></span>
-      <span>Current: <span>${(post.current_amount || 0).toFixed(2)}</span></span>
+      
+      <span> Current: <span>${(post.current_amount || 0).toFixed(2)}</span></span>
     </div>
 
     {/* Progress Bar */}
@@ -143,7 +144,7 @@ const PostDetail = () => {
       )}
       <form onSubmit={handleDonationSubmit} className="donation-form">
         <div className="form-group">
-          <label htmlFor="donationAmount">Amount ($)</label>
+          <label htmlFor="donationAmount"> Amount ($)</label>
           <input
             type="number"
             id="donationAmount"
