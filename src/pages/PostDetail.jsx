@@ -16,12 +16,12 @@ const PostDetail = () => {
   const [comments, setComments] = useState([])
   const [loadingComments, setLoadingComments] = useState(true)
   const [commentError, setCommentError] = useState(null)
-
   const [newCommentMessage, setNewCommentMessage] = useState('')
   const [submittingComment, setSubmittingComment] = useState(false)
   const [commentSubmissionError, setCommentSubmissionError] = useState(null)
   const [commentSubmissionSuccess, setCommentSubmissionSuccess] =
     useState(false)
+  const [currentUserId, setCurrentUserId] = useState(null)
 
   const BASE_API_URL = 'http://localhost:3000'
 
@@ -44,7 +44,7 @@ const PostDetail = () => {
     setCommentError(null)
     try {
       const token = localStorage.getItem('token')
- 
+
       const response = await axios.get(`http://localhost:3000/comments/${id}`, {
         headers: {
           Authorization: token ? `Bearer ${token}` : ''
@@ -61,13 +61,23 @@ const PostDetail = () => {
 
   useEffect(() => {
     fetchPostDetails()
-  }, [id])
-
-  useEffect(() => {
-    if (id) {
-      fetchComments()
+ const token = localStorage.getItem('token');
+  if (token) {
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      setCurrentUserId(payload.id);
+    } catch (e) {
+      console.error("Error decoding token:", e);
+      setCurrentUserId(null); 
     }
-  }, [id, commentSubmissionSuccess])
+  }
+
+  if (id) {
+    fetchComments();
+  }
+}, [id, commentSubmissionSuccess]);
+
+
 
   const handleDonationSubmit = async (e) => {
     e.preventDefault()
@@ -133,7 +143,7 @@ const PostDetail = () => {
         return
       }
       const response = await axios.post(
-        `${BASE_API_URL}/comments/${id}`, 
+        `${BASE_API_URL}/comments/${id}`,
         { message: newCommentMessage },
         {
           headers: {
@@ -143,7 +153,7 @@ const PostDetail = () => {
       )
 
       setCommentSubmissionSuccess(true)
-      setNewCommentMessage('') 
+      setNewCommentMessage('')
     } catch (err) {
       console.error(
         'Comment submission error:',
@@ -155,6 +165,27 @@ const PostDetail = () => {
       )
     } finally {
       setSubmittingComment(false)
+    }
+  }
+
+  const handleDeleteComment = async (commentId) => {
+    try {
+      const token = localStorage.getItem('token')
+      if (!token) {
+        alert('You must be logged in to delete a comment.')
+        return
+      }
+
+      await axios.delete(`${BASE_API_URL}/comments/${commentId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }) 
+
+      setComments(comments.filter((comment) => comment._id !== commentId))
+    } catch (err) {
+      console.error('Error deleting comment:', err)
+      alert('Failed to delete comment. Please try again.')
     }
   }
 
@@ -263,7 +294,7 @@ const PostDetail = () => {
             >
               Donate Now
             </button>
-          </form>
+          </form>{/* Comment Form */}
           <div className="comments-section">
             <h2>Comments ({comments.length})</h2>
 
@@ -293,6 +324,15 @@ const PostDetail = () => {
                       {new Date(comment.createdAt).toLocaleString()}
                     </span>
                   </div>
+                  
+      {comment.userId && comment.userId._id === currentUserId && (
+        <button
+          onClick={() => handleDeleteComment(comment._id)}
+          className="delete-comment-btn"
+        >
+          Delete
+        </button>
+        )}
                 </div>
               ))}
             </div>
