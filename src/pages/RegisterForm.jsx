@@ -1,22 +1,23 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import axios from "axios"
-
+import axios from 'axios'
+import '../../src/stylesheets/RegisterForm.css'
 
 export const RegisterUser = async (data, user) => {
   try {
-    
-    const res = await axios.post(`http://localhost:3000/auth/register?user=${user}`, data)
-    return res.data;
+    const res = await axios.post(
+      `http://localhost:3000/auth/register?user=${user}`,
+      data
+    )
+    return res.data
   } catch (error) {
-    console.error("Error during registration:", error)
+    console.error('Error during registration:', error)
     throw error
   }
 }
 
 const RegisterForm = () => {
   const navigate = useNavigate()
-
 
   const initialState = {
     first_name: '',
@@ -28,32 +29,38 @@ const RegisterForm = () => {
   }
 
   const [formValues, setFormValues] = useState(initialState)
-  
+  const [isLoading, setIsLoading] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
 
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
   }
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     try {
-      const userData = { ...formValues };
-      delete userData.confirm_password;
-      
-  
-      await RegisterUser(userData, 'customer');
-      
+      const userData = { ...formValues }
+      delete userData.confirm_password
 
-      setFormValues(initialState);
-      navigate('/auth/login');
+      await RegisterUser(userData, 'customer')
+
+      setFormValues(initialState)
+      navigate('/auth/login')
     } catch (error) {
-      console.error('Registration failed:', error);
+      console.error('Registration failed:', error)
     }
-  };
+  }
 
-  const isPasswordValid = formValues.password.length >= 8 && formValues.password === formValues.confirm_password;
-  const isFormFilled = Object.values(formValues).every(value => value.length > 0) && isPasswordValid;
-
+  const isPasswordValid =
+    formValues.password.length >= 8 &&
+    formValues.password === formValues.confirm_password
+  const isFormFilled =
+    formValues.first_name.length > 0 &&
+    formValues.last_name.length > 0 &&
+    formValues.email.length > 0 &&
+    formValues.address.length > 0 &&
+    isPasswordValid
+    
   return (
     <div className="Register-Container">
       <h1>Create a user account</h1>
@@ -68,6 +75,7 @@ const RegisterForm = () => {
             value={formValues.first_name}
             required
           />
+
           <label htmlFor="last_name">Last Name</label>
           <input
             type="text"
@@ -77,6 +85,7 @@ const RegisterForm = () => {
             value={formValues.last_name}
             required
           />
+
           <label htmlFor="email">Email</label>
           <input
             type="email"
@@ -86,6 +95,7 @@ const RegisterForm = () => {
             value={formValues.email}
             required
           />
+
           <label htmlFor="password">Password</label>
           <input
             type="password"
@@ -95,6 +105,7 @@ const RegisterForm = () => {
             value={formValues.password}
             required
           />
+
           <label htmlFor="confirm_password">Confirm Password</label>
           <input
             type="password"
@@ -104,6 +115,7 @@ const RegisterForm = () => {
             value={formValues.confirm_password}
             required
           />
+
           <label htmlFor="address">Address</label>
           <input
             type="text"
@@ -112,8 +124,9 @@ const RegisterForm = () => {
             onChange={handleChange}
             value={formValues.address}
           />
-          <br />
+
           <p>Passwords must match and be at least 8 characters long.</p>
+          {errorMessage && <p className="error-message">{errorMessage}</p>}
           <p>
             By creating an account you agree to the
             <br />
@@ -125,12 +138,13 @@ const RegisterForm = () => {
               terms of use
             </a>{' '}
           </p>
+
           <button
-            className="register-submit"
-            disabled={!isFormFilled}
+            className={`register-submit ${isLoading ? 'loading' : ''}`}
+            disabled={!isFormFilled || isLoading}
             type="submit"
           >
-            Create Your Account
+            {isLoading ? 'Registering...' : 'Create Your Account'}
           </button>
         </form>
       </div>

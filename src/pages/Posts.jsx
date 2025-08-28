@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useEffect } from "react"
 import { Link } from "react-router-dom";
+import '../../src/stylesheets/Posts.css'
 
 const Posts = ({ posts }) => {
 if (posts.length === 0) {
@@ -14,26 +15,31 @@ if (posts.length === 0) {
   
   return(
     <>
-  <div>
-      {posts.map((post) => (
-        <div key={post._id}>
-          <Link to={`/posts/${post._id}`} className="block">
-            <h2>{post.title}</h2>
-            <p>{post.description}</p> 
-            <div>
-              <span>Goal: <span>${post.goal_amount}</span></span>
-              <span>
-                {post.userId ? (
-                  `By: ${post.userId.first_name} ${post.userId.last_name}`
-                ) : (
-                  `By: Unknown User`
-                )}
-              </span>
-            </div>
-          </Link>
-        </div>
-      ))}
-    </div>
+<div className="posts-list-container">
+  <div className="posts-list">
+    {posts.map((post) => (
+      <div key={post._id} className="post-item">
+        <Link to={`/posts/${post._id}`} className="post-link">
+          <h2 className="post-title">{post.title}</h2>
+          <p className="post-description">{post.description}</p>
+          
+          <div className="post-meta">
+            <span className="post-goal">
+              Goal: <span>${post.goal_amount}</span>
+            </span>
+            <span className="post-author">
+              {post.userId ? (
+                `By: ${post.userId.first_name} ${post.userId.last_name}`
+              ) : (
+                `By: Unknown User`
+              )}
+            </span>
+          </div>
+        </Link>
+      </div>
+    ))}
+  </div>
+</div>
   
     </>
   )

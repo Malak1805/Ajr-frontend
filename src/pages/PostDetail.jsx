@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import '../../src/stylesheets/PostDetail.css'
 
 const PostDetail = () => {
   const { id } = useParams()
@@ -100,85 +101,90 @@ const PostDetail = () => {
   const progress = (post.current_amount / post.goal_amount) * 100;
 
   return (
-    <div>
-      <div>
-        <h1>{post.title}</h1>
-        <p>{post.description}</p>
+   <div className='postdetail-container'>
+  <div className='postdetails'>
+    <h1>{post.title}</h1>
+    <p>{post.description}</p>
 
-        <div>
-          <span>Goal: <span>${post.goal_amount.toFixed(2)}</span></span>
-          <span>Current: <span>${(post.current_amount || 0).toFixed(2)}</span></span>
+    <div className='postdonations'>
+      <span>Goal: <span>${post.goal_amount.toFixed(2)}</span></span>
+      <span>Current: <span>${(post.current_amount || 0).toFixed(2)}</span></span>
+    </div>
+
+    {/* Progress Bar */}
+    <div className="progress-container">
+      <div 
+        className="progress-bar"
+        style={{ width: `${Math.min(100, progress)}%` }}
+      ></div>
+    </div>
+    <p className="progress-text">{Math.min(100, progress).toFixed(2)}% of goal reached</p>
+
+    <div className="post-author">
+      {post.userId ? (
+        <span>By: {post.userId.first_name} {post.userId.last_name}</span>
+      ) : (
+        <span>By: Unknown User</span>
+      )}
+    </div>
+
+    {/* Donation Form */}
+    <div className="donation-section">
+      <h2>Make a Donation</h2>
+      {donationError && (
+        <div className="alert alert-error" role="alert">
+          <p>{donationError}</p>
         </div>
-
-        {/* Progress Bar */}
-        <div>
-          <div
-            className="bg-green-500 h-4 rounded-full transition-all duration-500 ease-in-out"
-            style={{ width: `${Math.min(100, progress)}%` }} 
-          ></div>
+      )}
+      {donationSuccess && (
+        <div className="alert alert-success" role="alert">
+          <p>Thank you for your donation! 🎉</p>
         </div>
-        <p>{Math.min(100, progress).toFixed(2)}% of goal reached</p>
-
-        <div>
-          {post.userId ? (
-            <span>By: {post.userId.first_name} {post.userId.last_name}</span>
-          ) : (
-            <span>By: Unknown User</span>
-          )}
+      )}
+      <form onSubmit={handleDonationSubmit} className="donation-form">
+        <div className="form-group">
+          <label htmlFor="donationAmount">Amount ($)</label>
+          <input
+            type="number"
+            id="donationAmount"
+            className="form-input"
+            value={donationAmount}
+            onChange={(e) => setDonationAmount(e.target.value)}
+            required
+            min="1"
+            step="0.01"
+            placeholder="Enter donation amount"
+          />
         </div>
-
-        {/* Donation Form */}
-        <h2>Make a Donation</h2>
-        {donationError && (
-          <div role="alert">
-            <p>{donationError}</p>
-          </div>
-        )}
-        {donationSuccess && (
-          <div role="alert">
-            <p>Thank you for your donation! 🎉</p>
-          </div>
-        )}
-        <form onSubmit={handleDonationSubmit} className="space-y-4">
-          <div>
-            <label htmlFor="donationAmount">Amount ($)</label>
-            <input
-              type="number"
-              id="donationAmount"
-              value={donationAmount}
-              onChange={(e) => setDonationAmount(e.target.value)}
-              required
-              min="1"
-              step="0.01"
-              
-            />
-          </div>
-          <div>
-            <label htmlFor="donationMessage">Message (Optional)</label>
-            <textarea
-              id="donationMessage"
-              value={donationMessage}
-              onChange={(e) => setDonationMessage(e.target.value)}
-              rows="3"
-             
-            ></textarea>
-          </div>
-          <button
-            type="submit"
-           
-          >
-            Donate Now
-          </button>
-        </form>
-
-        <div>
-          <Link to="/">
-            &larr; Back to all posts
-          </Link>
+        <div className="form-group">
+          <label htmlFor="donationMessage">Message (Optional)</label>
+          <textarea
+            id="donationMessage"
+            className="form-textarea"
+            value={donationMessage}
+            onChange={(e) => setDonationMessage(e.target.value)}
+            rows="3"
+            placeholder="Leave a message of support (optional)"
+          ></textarea>
         </div>
+        <button
+          type="submit"
+          className="donate-btn"
+          disabled={!donationAmount || parseFloat(donationAmount) <= 0}
+        >
+          Donate Now
+        </button>
+      </form>
+
+      <div className="back-link-container">
+        <Link to="/" className="back-link">
+          ← Back to all posts
+        </Link>
       </div>
     </div>
+  </div>
+</div>
+
   )
 }
-
 export default PostDetail

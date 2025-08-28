@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import '../../src/stylesheets/LoginForm.css'
 
 export const LoginUser = async (data) => {
   try {
@@ -26,6 +27,7 @@ const LoginForm = () => {
   const [formValues, setFormValues] = useState(initialState)
 
   const [message, setMessage] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
@@ -33,6 +35,7 @@ const LoginForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setIsLoading(true)
     setMessage('')
     try {
       const response = await LoginUser(formValues)
@@ -49,15 +52,15 @@ const LoginForm = () => {
         error.response?.data?.msg || 'An unexpected error occurred.'
       setMessage(errorMessage)
       console.error('Login failed:', error)
-    }
+    } finally {
+      setIsLoading(false);
   }
-
+  }
   return (
-    <div>
-      <div>
+<div className="login-form-wrapper">
         <h1>Log In to Your Account</h1>
-        <form onSubmit={handleSubmit}>
-          <div>
+        <form onSubmit={handleSubmit} className="login-form">
+          <div className="form-field">
             <label htmlFor="email">Email</label>
             <input
               type="email"
@@ -69,7 +72,7 @@ const LoginForm = () => {
               required
             />
           </div>
-          <div>
+          <div className="form-field">
             <label htmlFor="password">Password</label>
             <input
               type="password"
@@ -81,11 +84,16 @@ const LoginForm = () => {
               required
             />
           </div>
-          <button type="submit">Log In</button>
+          <div className="forgot-password">
+            <a href="/forgot-password">Forgot Password?</a>
+          </div>
+          <button type="submit" className="login-submit" disabled={isLoading}>
+            {isLoading ? 'Logging In...' : 'Log In'}
+          </button>
         </form>
-        {message && <p>{message}</p>}
+        {message && <p className="message">{message}</p>}
       </div>
-    </div>
+   
   )
 }
 
