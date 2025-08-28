@@ -25,6 +25,24 @@ const PostDetail = () => {
 
   const BASE_API_URL = 'http://localhost:3000'
 
+  const handleDeletePost = async () => {
+    if (window.confirm('Are you sure you want to delete this post?')) {
+      try {
+        const token = localStorage.getItem('token')
+        await axios.delete(`http://localhost:3000/posts/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+        navigate('/') 
+      } catch (err) {
+        console.error('Failed to delete post:', err.response?.data || err.message)
+        alert('Failed to delete post. You may not have permission.')
+      }
+    }
+  }
+
+
   const fetchPostDetails = async () => {
     try {
       setLoading(true)
@@ -246,6 +264,14 @@ const PostDetail = () => {
           ) : (
             <span>By: Unknown User</span>
           )}
+          <div className="post-actions">
+      <Link to={`/edit-post/${post._id}`} className="edit-post-btn">
+        Edit Post
+      </Link>
+      <button onClick={handleDeletePost} className="delete-post-btn">
+        Delete Post
+      </button>
+    </div>
         </div>
 
         {/* Donation Form */}

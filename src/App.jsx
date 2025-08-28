@@ -7,6 +7,7 @@ import LoginForm from './pages/LoginForm'
 import Posts from './pages/Posts'
 import AddPost from './components/AddPost'
 import PostDetail from './pages/PostDetail'
+import EditPost from './components/EditPost'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import axios from 'axios'
@@ -61,6 +62,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home posts={posts}/>} />
         <Route path='/posts/new' element={<AddPost setPosts={setPosts} />} />
+        <Route path="/edit-post/:id" element={<EditPost />} />
         <Route path='/posts/:id' element={<PostDetail posts={posts} />} />
         <Route path='/posts' element={<Posts posts={posts} />} />
         <Route path='/auth/register' element={<RegisterForm />} />
