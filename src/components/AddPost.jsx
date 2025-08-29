@@ -4,7 +4,7 @@ import Home from '../pages/Home'
 import { useNavigate } from 'react-router'
 import axios from 'axios'
 
-const AddPost = ({ setPosts }) => {
+const AddPost = () => {
   const navigate = useNavigate()
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')

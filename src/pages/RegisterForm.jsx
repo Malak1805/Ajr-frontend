@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import '../../src/stylesheets/RegisterForm.css'
+import '../../public/stylesheets/RegisterForm.css'
 
 export const RegisterUser = async (data, user) => {
   try {
@@ -60,7 +60,7 @@ const RegisterForm = () => {
     formValues.email.length > 0 &&
     formValues.address.length > 0 &&
     isPasswordValid
-    
+
   return (
     <div className="Register-Container">
       <h1>Create a user account</h1>

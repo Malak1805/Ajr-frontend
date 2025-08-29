@@ -1,9 +1,9 @@
 import { useState } from "react"
 import { useEffect } from "react"
 import { Link } from "react-router-dom"
-import '../../src/stylesheets/Posts.css'
+import '../../public/stylesheets/Posts.css'
 
-const Posts = ({ posts }) => {
+const Posts = ({ posts = [] }) => {
 if (posts.length === 0) {
     return (
       <div className="post-container">

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import '../../src/stylesheets/PostDetail.css'
+import '../../public/stylesheets/PostDetail.css'
 
 const PostDetail = () => {
   const { id } = useParams()
