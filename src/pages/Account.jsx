@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { UserContext } from '../Context/UserContext'
-// import '../../public/stylesheets/Account.css'
+import '../../public/stylesheets/Account.css'
 
 const Account = () => { 
 
