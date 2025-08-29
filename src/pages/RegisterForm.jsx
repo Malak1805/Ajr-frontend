@@ -25,7 +25,8 @@ const RegisterForm = () => {
     email: '',
     password: '',
     confirm_password: '',
-    address: ''
+    address: '',
+    phone_number: ''
   }
 
   const [formValues, setFormValues] = useState(initialState)
@@ -74,6 +75,7 @@ const RegisterForm = () => {
             onChange={handleChange}
             value={formValues.first_name}
             required
+            autoComplete="given-name"
           />
 
           <label htmlFor="last_name">Last Name</label>
@@ -94,6 +96,7 @@ const RegisterForm = () => {
             onChange={handleChange}
             value={formValues.email}
             required
+            autoComplete="email"
           />
 
           <label htmlFor="password">Password</label>
@@ -104,6 +107,7 @@ const RegisterForm = () => {
             onChange={handleChange}
             value={formValues.password}
             required
+            autoComplete="new-password"
           />
 
           <label htmlFor="confirm_password">Confirm Password</label>
@@ -124,6 +128,15 @@ const RegisterForm = () => {
             onChange={handleChange}
             value={formValues.address}
           />
+
+          <label htmlFor="phone_number">Phone Number</label>
+<input
+  type="tel" 
+  name="phone_number"
+  placeholder="Phone Number (Optional)"
+  onChange={handleChange}
+  value={formValues.phoneNumber}
+/>
 
           <p>Passwords must match and be at least 8 characters long.</p>
           {errorMessage && <p className="error-message">{errorMessage}</p>}

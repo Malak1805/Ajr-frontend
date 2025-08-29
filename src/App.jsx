@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 import Home from './pages/Home'
 import NavBar from './components/NavBar'
 import './App.css'
@@ -9,14 +9,49 @@ import AddPost from './components/AddPost'
 import PostDetail from './pages/PostDetail'
 import EditPost from './components/EditPost'
 import Donation from './components/Donation'
-
+import Account from './pages/Account'
 import { useState } from 'react'
 import DonationList from './components/DonationList'
+import Client from '../services/Api'
+import { useContext } from 'react'
+import { BASE_URL } from '../globals'
+import { UserContext } from './Context/UserContext'
+import { useEffect } from 'react'
 
 function App() {
-
 const [postsUpdated, setPostsUpdated] = useState(false)
+  const [loading, setLoading] = useState(true)
+  const { user, setUser } = useContext(UserContext) 
+  const navigate = useNavigate()
+
   const onPostChange = () => setPostsUpdated(prev => !prev)
+
+  const getAccount = async () => {
+    try {
+      const token = localStorage.getItem('token')
+      if (token) {
+        const res = await Client.get(`${BASE_URL}/auth/session`)
+        setUser(res.data)
+      } else {
+        setUser(null)
+      }
+    } catch (err) {
+      console.error(err)
+      localStorage.clear()
+      setUser(null)
+    } finally {
+      setLoading(false)
+    }
+  };
+
+  useEffect(() => {
+    getAccount()
+  }, [])
+
+  if (loading) {
+    return <div>Loading...</div>
+  }
+
 
   return (
     <>
@@ -30,6 +65,7 @@ const [postsUpdated, setPostsUpdated] = useState(false)
           <Route path="/posts/:id" element={<PostDetail onPostChange={onPostChange} />} />
           <Route path="/my-donations" element={<DonationList />} />
           <Route path="/posts/:postId/donations" element={<Donation />} />
+          <Route path="/account" element={<Account  />} />
           <Route path="/auth/register" element={<RegisterForm />} />
           <Route path="/auth/login" element={<LoginForm />} />
         </Routes>
