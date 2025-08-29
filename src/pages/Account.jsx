@@ -18,11 +18,7 @@ const navigate = useNavigate()
   }
 
 
-  const handleLogOut = () => {
-    setUser(null)
-    localStorage.clear()
-    navigate('/auth/login')
-  }
+  
   return (
     <div className="account-container">
       <div className="settings-btn">
@@ -56,10 +52,7 @@ const navigate = useNavigate()
         <input type="text" value={user.phone_number} readOnly />
       </label>
 
-      <Link to={'/account/password'}>
-        <button>Change password</button>
-      </Link>
-      <button onClick={handleLogOut}>Log out</button>
+     
 
       <div className="edit-btn">
         <button onClick={() => handleEditToggle()}>Edit Profile</button>

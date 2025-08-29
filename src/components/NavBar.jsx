@@ -21,8 +21,6 @@ return(
             <Link to='/auth/register' className="nav-link">Register</Link>
           </>
         )}
-<Link to='/auth/login' className="nav-link">Login</Link>
-<Link to='/auth/register' className="nav-link">Register</Link>
 </nav>
   </>
 )
