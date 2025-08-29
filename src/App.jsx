@@ -8,7 +8,10 @@ import Posts from './pages/Posts'
 import AddPost from './components/AddPost'
 import PostDetail from './pages/PostDetail'
 import EditPost from './components/EditPost'
+import Donation from './components/Donation'
+
 import { useState } from 'react'
+import DonationList from './components/DonationList'
 
 function App() {
 
@@ -25,7 +28,8 @@ const [postsUpdated, setPostsUpdated] = useState(false)
           <Route path="/posts/new" element={<AddPost onPostChange={onPostChange} />} />
           <Route path="/edit-post/:id" element={<EditPost onPostChange={onPostChange}/>} />
           <Route path="/posts/:id" element={<PostDetail onPostChange={onPostChange} />} />
-          
+          <Route path="/my-donations" element={<DonationList />} />
+          <Route path="/posts/:postId/donations" element={<Donation />} />
           <Route path="/auth/register" element={<RegisterForm />} />
           <Route path="/auth/login" element={<LoginForm />} />
         </Routes>

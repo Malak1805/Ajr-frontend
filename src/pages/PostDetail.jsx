@@ -33,15 +33,17 @@ const PostDetail = () => {
           headers: {
             Authorization: `Bearer ${token}`
           }
-        });
-        navigate('/') 
+        })
+        navigate('/')
       } catch (err) {
-        console.error('Failed to delete post:', err.response?.data || err.message)
+        console.error(
+          'Failed to delete post:',
+          err.response?.data || err.message
+        )
         alert('Failed to delete post. You may not have permission.')
       }
     }
   }
-
 
   const fetchPostDetails = async () => {
     try {
@@ -79,23 +81,21 @@ const PostDetail = () => {
 
   useEffect(() => {
     fetchPostDetails()
- const token = localStorage.getItem('token');
-  if (token) {
-    try {
-      const payload = JSON.parse(atob(token.split('.')[1]));
-      setCurrentUserId(payload.id);
-    } catch (e) {
-      console.error("Error decoding token:", e);
-      setCurrentUserId(null); 
+    const token = localStorage.getItem('token')
+    if (token) {
+      try {
+        const payload = JSON.parse(atob(token.split('.')[1]))
+        setCurrentUserId(payload.id)
+      } catch (e) {
+        console.error('Error decoding token:', e)
+        setCurrentUserId(null)
+      }
     }
-  }
 
-  if (id) {
-    fetchComments();
-  }
-}, [id, commentSubmissionSuccess]);
-
-
+    if (id) {
+      fetchComments()
+    }
+  }, [id, commentSubmissionSuccess])
 
   const handleDonationSubmit = async (e) => {
     e.preventDefault()
@@ -198,7 +198,7 @@ const PostDetail = () => {
         headers: {
           Authorization: `Bearer ${token}`
         }
-      }) 
+      })
 
       setComments(comments.filter((comment) => comment._id !== commentId))
     } catch (err) {
@@ -233,7 +233,6 @@ const PostDetail = () => {
       <div className="postdetails">
         <h1>{post.title}</h1>
         <p>{post.description}</p>
-
         <div className="postdonations">
           <span>
             Goal: <span>${post.goal_amount.toFixed(2)}</span>
@@ -244,7 +243,6 @@ const PostDetail = () => {
             Current: <span>${(post.current_amount || 0).toFixed(2)}</span>
           </span>
         </div>
-
         {/* Progress Bar */}
         <div className="progress-container">
           <div
@@ -255,7 +253,14 @@ const PostDetail = () => {
         <p className="progress-text">
           {Math.min(100, progress).toFixed(2)}% of goal reached
         </p>
-
+        {' '}
+        <div className="view-donations-link-container">
+          {' '}
+          <Link to={`/posts/${id}/donations`} className="view-donations-link">
+          <button>View All Donations</button>{' '}
+          </Link>
+          {' '}
+        </div>
         <div className="post-author">
           {post.userId ? (
             <span>
@@ -265,15 +270,14 @@ const PostDetail = () => {
             <span>By: Unknown User</span>
           )}
           <div className="post-actions">
-      <Link to={`/edit-post/${post._id}`} className="edit-post-btn">
-        Edit Post
-      </Link>
-      <button onClick={handleDeletePost} className="delete-post-btn">
-        Delete Post
-      </button>
-    </div>
+            <Link to={`/edit-post/${post._id}`} className="edit-post-btn">
+              Edit Post
+            </Link>
+            <button onClick={handleDeletePost} className="delete-post-btn">
+              Delete Post
+            </button>
+          </div>
         </div>
-
         {/* Donation Form */}
         <div className="donation-section">
           <h2>Make a Donation</h2>
@@ -320,7 +324,8 @@ const PostDetail = () => {
             >
               Donate Now
             </button>
-          </form>{/* Comment Form */}
+          </form>
+          {/* Comment Form */}
           <div className="comments-section">
             <h2>Comments ({comments.length})</h2>
 
@@ -350,15 +355,15 @@ const PostDetail = () => {
                       {new Date(comment.createdAt).toLocaleString()}
                     </span>
                   </div>
-                  
-      {comment.userId && comment.userId._id === currentUserId && (
-        <button
-          onClick={() => handleDeleteComment(comment._id)}
-          className="delete-comment-btn"
-        >
-          Delete
-        </button>
-        )}
+
+                  {comment.userId && comment.userId._id === currentUserId && (
+                    <button
+                      onClick={() => handleDeleteComment(comment._id)}
+                      className="delete-comment-btn"
+                    >
+                      Delete
+                    </button>
+                  )}
                 </div>
               ))}
             </div>

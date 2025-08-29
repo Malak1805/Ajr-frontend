@@ -40,15 +40,15 @@ const AddPost = ({ onPostChange }) => {
 
 
     
-      onPostChange();
+      onPostChange()
 
       // setPosts((prevPosts) => [createdPost, ...prevPosts]);
 
 
-      navigate('/');
+      navigate('/')
     } catch (err) {
-      console.error('Failed to add post:', err.response ? err.response.data : err.message);
-      setError(err.response ? err.response.data.msg : 'An unexpected error occurred.');
+      console.error('Failed to add post:', err.response ? err.response.data : err.message)
+      setError(err.response ? err.response.data.msg : 'An unexpected error occurred.')
     }
   };
 
