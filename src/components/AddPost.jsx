@@ -1,10 +1,10 @@
 import Posts from '../pages/Posts'
 import { useState } from 'react'
 import Home from '../pages/Home'
-import { useNavigate } from 'react-router'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
-const AddPost = () => {
+const AddPost = ({ onPostChange }) => {
   const navigate = useNavigate()
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
@@ -39,12 +39,13 @@ const AddPost = () => {
       )
 
 
-      const createdPost = response.data;
+    
+      onPostChange();
 
-      setPosts((prevPosts) => [createdPost, ...prevPosts]);
+      // setPosts((prevPosts) => [createdPost, ...prevPosts]);
 
 
-      navigate('/posts');
+      navigate('/');
     } catch (err) {
       console.error('Failed to add post:', err.response ? err.response.data : err.message);
       setError(err.response ? err.response.data.msg : 'An unexpected error occurred.');
