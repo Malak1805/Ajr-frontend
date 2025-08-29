@@ -13,6 +13,7 @@ import Account from './pages/Account'
 import EditAccount from './pages/EditAccount'
 import Settings from './pages/Settings'
 import UpdatePassword from './pages/UpdatePassword'
+import About from './pages/About'
 import { useState } from 'react'
 import DonationList from './components/DonationList'
 import Client from '../services/Api'
@@ -70,6 +71,7 @@ const [postsUpdated, setPostsUpdated] = useState(false)
           <Route path="/posts/:postId/donations" element={<Donation />} />
           <Route path="/account" element={<Account  />} />
           <Route path="/account/edit" element={<EditAccount />} />
+          <Route path="/about" element={<About />} />
           <Route path="/account/settings" element={<Settings />} />
           <Route path="/account/password" element={<UpdatePassword />} />
           <Route path="/auth/register" element={<RegisterForm />} />
