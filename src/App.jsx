@@ -60,7 +60,7 @@ const [postsUpdated, setPostsUpdated] = useState(false)
   return (
     <>
       <main>
-        <h1>Place Your Donations Now!</h1>
+        {/* <h1>Place Your Donations Now!</h1> */}
         <NavBar />
         <Routes>
           <Route path="/" element={<Home postsUpdated={postsUpdated} />}/>

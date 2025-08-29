@@ -10,9 +10,9 @@
 /* Container to hold form */
 .searchbar-container {
   width: 100%;
-  max-width: 600px;
+  max-width: none;
   background: #ffffff;
-  border-radius: 50px;
+  border-radius: none;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
 }

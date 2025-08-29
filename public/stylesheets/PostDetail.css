@@ -1,13 +1,16 @@
 .postdetail-container {
-  max-width: 800px;
+   max-width: none;
+   width: 100%;
   margin: 0 auto;
-  padding: 20px;
+  padding: 40px 20px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   min-height: 100vh;
+  display: flex; align-items: center
 }
 
 .postdetails {
+  width: 100%;
   background: white;
   border-radius: 16px;
   padding: 40px;

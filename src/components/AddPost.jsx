@@ -3,6 +3,7 @@ import { useState } from 'react'
 import Home from '../pages/Home'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import '../../public/stylesheets/AddPost.css'
 
 const AddPost = ({ onPostChange }) => {
   const navigate = useNavigate()
@@ -54,46 +55,49 @@ const AddPost = ({ onPostChange }) => {
 
   return (
     <>
-      <div>
-        <div>
-          <h1>Create a New Post</h1>
-          <form onSubmit={handleAddPost}>
-            <div className="adding-post-container">
-              <label htmlFor="title">Title</label>
-              <input
-                type="text"
-                id="title"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                required
-              />
-            </div>
-            <div className="mb-4">
-              <label htmlFor="description">Description</label>
-              <textarea
-                id="description"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                required
-              ></textarea>
-            </div>
-            <div className="mb-6">
-              <label htmlFor="goalAmount">Goal Amount ($)</label>
-              <input
-                type="number"
-                id="goalAmount"
-                value={goalAmount}
-                onChange={(e) => setGoalAmount(e.target.value)}
-                required
-                min="0"
-              />
-            </div>
-            <div className="text-center">
-              <button type="submit">Create Post</button>
-            </div>
-          </form>
-        </div>
+<div className="create-post-page">
+  <div className="create-post-wrapper">
+    <h1 className="create-post-title">Create a New Post</h1>
+    <form onSubmit={handleAddPost} className="create-post-form">
+      <div className="form-group">
+        <label htmlFor="title">Title</label>
+        <input
+          type="text"
+          id="title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          required
+        />
       </div>
+
+      <div className="form-group">
+        <label htmlFor="description">Description</label>
+        <textarea
+          id="description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          required
+        ></textarea>
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="goalAmount">Goal Amount ($)</label>
+        <input
+          type="number"
+          id="goalAmount"
+          value={goalAmount}
+          onChange={(e) => setGoalAmount(e.target.value)}
+          required
+          min="0"
+        />
+      </div>
+
+      <div className="form-actions">
+        <button type="submit">✨ Create Post</button>
+      </div>
+    </form>
+  </div>
+</div>
     </>
   )
 }
