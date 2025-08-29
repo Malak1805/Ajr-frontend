@@ -10,6 +10,7 @@ import PostDetail from './pages/PostDetail'
 import EditPost from './components/EditPost'
 import Donation from './components/Donation'
 import Account from './pages/Account'
+import EditAccount from './pages/EditAccount'
 import { useState } from 'react'
 import DonationList from './components/DonationList'
 import Client from '../services/Api'
@@ -66,6 +67,7 @@ const [postsUpdated, setPostsUpdated] = useState(false)
           <Route path="/my-donations" element={<DonationList />} />
           <Route path="/posts/:postId/donations" element={<Donation />} />
           <Route path="/account" element={<Account  />} />
+          <Route path="/account/edit" element={<EditAccount />} />
           <Route path="/auth/register" element={<RegisterForm />} />
           <Route path="/auth/login" element={<LoginForm />} />
         </Routes>

@@ -9,7 +9,7 @@ const navigate = useNavigate()
   const { user, setUser } = useContext(UserContext)
 
   const handleEditToggle = () => {
-    navigate('edit')
+    navigate('/account/edit')
   }
 
 
