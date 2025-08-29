@@ -57,42 +57,56 @@ const LoginForm = () => {
   }
   }
   return (
-<div className="login-form-wrapper">
-        <h1>Log In to Your Account</h1>
-        <form onSubmit={handleSubmit} className="login-form">
-          <div className="form-field">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="you@example.com"
-              onChange={handleChange}
-              value={formValues.email}
-              required
-            />
-          </div>
-          <div className="form-field">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Password"
-              onChange={handleChange}
-              value={formValues.password}
-              required
-            />
-          </div>
-          <div className="forgot-password">
-            <a href="/forgot-password">Forgot Password?</a>
-          </div>
-          <button type="submit" className="login-submit" disabled={isLoading}>
-            {isLoading ? 'Logging In...' : 'Log In'}
-          </button>
-        </form>
-        {message && <p className="message">{message}</p>}
+<div className="login-container">
+  <div className="login-form-wrapper">
+    <h1>Log In to Your Account</h1>
+    <form onSubmit={handleSubmit} className="login-form">
+      <div className="form-field">
+        <label htmlFor="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="you@example.com"
+          onChange={handleChange}
+          value={formValues.email}
+          required
+        />
       </div>
+      
+      <div className="form-field">
+        <label htmlFor="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Password"
+          onChange={handleChange}
+          value={formValues.password}
+          required
+        />
+      </div>
+      
+      <button 
+        type="submit" 
+        className={`login-submit ${isLoading ? 'loading' : ''}`}
+      >
+        Log In
+      </button>
+    </form>
+    
+    {/* Optional: Add forgot password link */}
+    <div className="forgot-password">
+      <a href="/forgot-password">Forgot your password?</a>
+    </div>
+    
+    {message && (
+      <div className={`message ${messageType === 'error' ? 'error' : 'success'}`}>
+        {message}
+      </div>
+    )}
+  </div>
+</div>
    
   )
 }
