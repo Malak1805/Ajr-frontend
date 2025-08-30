@@ -2,22 +2,25 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import '../../public/stylesheets/DonationList.css'
+import { BASE_URL } from '../../globals'
 
-const DonationList = () => {
+const DonationList = ({ user }) => {
     const [donatedPosts, setDonatedPosts] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
 
     useEffect(() => {
         const fetchDonatedPosts = async () => {
-            try {
+    
                 const token = localStorage.getItem('token')
-                if (!token) {
+                if (!token || !user) {
                     setError('You must be logged in to view your donations.')
                     setLoading(false)
                     return
-                }
-                const response = await axios.get('http://localhost:3000/donations/my-donations', {
+                } 
+                
+                try {
+                const response = await axios.get(`${BASE_URL}/donations/my-donations`, {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
@@ -32,14 +35,14 @@ const DonationList = () => {
         }
 
         fetchDonatedPosts()
-    }, [])
+    }, [user])
 
     if (loading) return <div className="loading-message">Loading your donations...</div>
     if (error) return <div className="error-message">{error}</div>
 
     return (
 <div className="donations-page">
-  <h1>Posts I've Donated To</h1>
+  <h1>{user.first_name ? `${user.first_name}'s Donation List!` : 'Donation List!'}</h1>
 
   {donatedPosts.length === 0 ? (
     <div className="empty-state">

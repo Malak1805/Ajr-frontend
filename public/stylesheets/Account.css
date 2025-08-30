@@ -1,134 +1,566 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
 
-.account-container {
-  width: 90%;           
-  max-width: 1000px;    
-  min-width: 320px;     
-  margin: 40px auto;
-  padding: 50px 40px;
-  background: #ffffff;
-  border-radius: 20px;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
-  font-family: 'Inter', sans-serif;
-  position: relative;
-  transition: all 0.3s ease;
+
+:root {
+    
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --primary-color: #667eea;
+    --primary-dark: #5a6fd8;
+    --primary-light: rgba(102, 126, 234, 0.1);
+    
+    
+    --heart-red: #e74c3c;
+    --warm-orange: #f39c12;
+    --hope-green: #2ecc71;
+    --trust-blue: #3498db;
+    --caring-purple: #9b59b6;
+    
+    
+    --donation-green: #27ae60;
+    --progress-gold: #f1c40f;
+    --impact-coral: #ff6b6b;
+    --community-teal: #1abc9c;
+    
+    
+    --white: #ffffff;
+    --cream: #fefefe;
+    --light-gray: #f8fafc;
+    --soft-gray: #f1f5f9;
+    --medium-gray: #e2e8f0;
+    --border-gray: #cbd5e0;
+    --text-gray: #64748b;
+    --dark-gray: #334155;
+    --charcoal: #1e293b;
+    --deep-navy: #0f172a;
+    
+    --shadow-whisper: 0 1px 3px rgba(0, 0, 0, 0.04);
+    --shadow-gentle: 0 4px 6px rgba(0, 0, 0, 0.05);
+    --shadow-soft: 0 8px 15px rgba(0, 0, 0, 0.08);
+    --shadow-medium: 0 10px 25px rgba(0, 0, 0, 0.1);
+    --shadow-strong: 0 20px 40px rgba(0, 0, 0, 0.15);
+    --shadow-dramatic: 0 25px 50px rgba(0, 0, 0, 0.25);
+    --shadow-glow: 0 0 0 4px rgba(102, 126, 234, 0.12);
+    --shadow-heart: 0 0 20px rgba(231, 76, 60, 0.2);
+    
+    --transition-quick: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-elegant: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+    --radius-2xl: 24px;
+    --radius-3xl: 32px;
+    --radius-full: 9999px;
+    
+    --space-xs: 0.5rem;
+    --space-sm: 0.75rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 2.5rem;
+    --space-3xl: 3rem;
+    --space-4xl: 4rem;
+    --space-5xl: 5rem;
+    --space-6xl: 6rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--dark-gray);
+    background: var(--light-gray);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 
+.fundraising-wrapper {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-attachment: fixed;
+    padding: var(--space-xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.fundraising-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(46, 204, 113, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(231, 76, 60, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(52, 152, 219, 0.06) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.fundraising-wrapper::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+    animation: float 20s infinite linear;
+    pointer-events: none;
+}
+
+@keyframes float {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-60px, -60px); }
+}
+
+
+.account-container {
+    background: var(--white);
+    border-radius: var(--radius-3xl);
+    box-shadow: var(--shadow-dramatic);
+    width: 100%;
+    max-width: 800px;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    animation: slideInScale 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes slideInScale {
+    0% {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.account-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, var(--donation-green), var(--hope-green), var(--community-teal));
+    border-radius: var(--radius-3xl) var(--radius-3xl) 0 0;
+}
+
+
+.header-section {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.02) 0%, rgba(46, 204, 113, 0.02) 100%);
+    padding: var(--space-3xl) var(--space-xl) var(--space-2xl);
+    border-bottom: 1px solid var(--medium-gray);
+    position: relative;
+    text-align: center;
+}
+
 .settings-btn {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 20px;
+    position: absolute;
+    top: var(--space-lg);
+    right: var(--space-lg);
+    z-index: 10;
+}
+
+.settings-btn a {
+    text-decoration: none;
 }
 
 .settings-btn button {
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: #fff;
-  padding: 10px 22px;
-  border-radius: 8px;
-  border: none;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
+    background: var(--white);
+    border: 2px solid var(--border-gray);
+    border-radius: var(--radius-full);
+    padding: var(--space-sm) var(--space-lg);
+    color: var(--text-gray);
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all var(--transition-smooth);
+    box-shadow: var(--shadow-gentle);
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+}
+
+.settings-btn button::before {
+    content: '⚙️';
+    font-size: 16px;
 }
 
 .settings-btn button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.25);
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--white);
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-2px);
+}
+
+.title-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.fundraiser-badge {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, var(--heart-red), var(--impact-coral));
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 40px;
+    box-shadow: var(--shadow-heart);
+    position: relative;
+    overflow: hidden;
+    animation: heartbeat 2s infinite;
+}
+
+@keyframes heartbeat {
+    0%, 50%, 100% { transform: scale(1); }
+    25%, 75% { transform: scale(1.1); }
+}
+
+.fundraiser-badge::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transform: rotate(45deg);
+    animation: compassionShine 3s infinite;
+}
+
+@keyframes compassionShine {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+.title-wrapper h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin: 0;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, var(--charcoal), var(--primary-color));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.platform-tagline {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    color: var(--text-gray);
+    font-weight: 400;
+    font-style: italic;
+    opacity: 0.8;
 }
 
 
-.account-container h2 {
-  text-align: center;
-  font-size: 2rem;
-  font-weight: 700;
-  color: #212529;
-  margin-bottom: 30px;
-  position: relative;
+.form-container {
+    padding: var(--space-3xl) var(--space-xl);
+    background: var(--white);
 }
 
-.account-container h2::after {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-  border-radius: 2px;
-  margin: 10px auto 0;
+.input-section {
+    margin-bottom: var(--space-2xl);
+}
+
+.input-row {
+    margin-bottom: var(--space-xl);
+    animation: gentleFadeIn 0.6s ease-out backwards;
+}
+
+.input-row:nth-child(1) { animation-delay: 0.1s; }
+.input-row:nth-child(2) { animation-delay: 0.2s; }
+.input-row:nth-child(3) { animation-delay: 0.3s; }
+.input-row:nth-child(4) { animation-delay: 0.4s; }
+.input-row:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes gentleFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.input-row label {
+    display: block;
+    position: relative;
+}
+
+.input-row span {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--dark-gray);
+    margin-bottom: var(--space-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+}
+
+.input-row span::before {
+    content: '';
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 15px;
+    background: var(--donation-green);
+    border-radius: var(--radius-sm);
+}
+
+.input-row input {
+    width: 100%;
+    padding: var(--space-lg) var(--space-xl);
+    border: 2px solid var(--border-gray);
+    border-radius: var(--radius-xl);
+    background: var(--soft-gray);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--charcoal);
+    transition: all var(--transition-smooth);
+    box-shadow: var(--shadow-whisper);
+    font-family: 'Inter', sans-serif;
+}
+
+.input-row input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background: var(--white);
+    box-shadow: var(--shadow-glow), var(--shadow-soft);
+    transform: translateY(-2px);
+}
+
+.input-row input:hover:not(:focus) {
+    border-color: var(--primary-light);
+    background: var(--cream);
+    box-shadow: var(--shadow-gentle);
 }
 
 
-label {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-  font-weight: 500;
-  color: #495057;
-}
-
-label span {
-  margin-bottom: 6px;
-  font-size: 0.95rem;
-}
-
-input {
-  padding: 12px 16px;
-  border-radius: 10px;
-  border: 1.5px solid #dee2e6;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  background: #f8f9fa;
-  color: #212529;
-}
-
-input:focus {
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-  outline: none;
-}
-
-
-.edit-btn {
-  text-align: center;
-  margin-top: 30px;
+.action-wrapper {
+    text-align: center;
+    padding-top: var(--space-xl);
+    border-top: 1px solid var(--medium-gray);
+    background: linear-gradient(135deg, var(--light-gray) 0%, var(--white) 100%);
 }
 
 .edit-btn button {
-  background: linear-gradient(135deg, #48bb78, #38a169);
-  color: #ffffff;
-  padding: 12px 28px;
-  font-size: 1rem;
-  font-weight: 600;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, var(--donation-green), var(--hope-green));
+    border: none;
+    border-radius: var(--radius-full);
+    padding: var(--space-lg) var(--space-3xl);
+    color: var(--white);
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all var(--transition-bounce);
+    box-shadow: var(--shadow-medium);
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    min-width: 200px;
+}
+
+.edit-btn button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left var(--transition-elegant);
 }
 
 .edit-btn button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(72, 187, 120, 0.25);
+    background: linear-gradient(135deg, var(--hope-green), var(--community-teal));
+    box-shadow: var(--shadow-strong);
+    transform: translateY(-4px) scale(1.02);
+}
+
+.edit-btn button:hover::before {
+    left: 100%;
+}
+
+.edit-btn button:active {
+    transform: translateY(-2px) scale(1.01);
+}
+
+.edit-btn button::after {
+    content: '💝';
+    margin-left: var(--space-sm);
+    font-size: 18px;
 }
 
 
 @media (max-width: 768px) {
-  .account-container {
-    padding: 30px 20px;
-    margin: 20px;
-  }
-
-  .edit-btn button,
-  .settings-btn button {
-    width: 100%;
-  }
+    .fundraising-wrapper {
+        padding: var(--space-md);
+    }
+    
+    .header-section {
+        padding: var(--space-2xl) var(--space-lg) var(--space-xl);
+    }
+    
+    .settings-btn {
+        top: var(--space-md);
+        right: var(--space-md);
+    }
+    
+    .fundraiser-badge {
+        width: 80px;
+        height: 80px;
+        font-size: 32px;
+    }
+    
+    .title-wrapper h2 {
+        font-size: 2rem;
+    }
+    
+    .form-container {
+        padding: var(--space-2xl) var(--space-lg);
+    }
+    
+    .input-row {
+        margin-bottom: var(--space-lg);
+    }
+    
+    .edit-btn button {
+        width: 100%;
+        min-width: auto;
+    }
 }
 
 @media (max-width: 480px) {
-  .account-container h2 {
-    font-size: 1.6rem;
-  }
+    .fundraising-wrapper {
+        padding: var(--space-sm);
+    }
+    
+    .fundraiser-badge {
+        width: 70px;
+        height: 70px;
+        font-size: 28px;
+    }
+    
+    .title-wrapper h2 {
+        font-size: 1.75rem;
+    }
+    
+    .input-row input {
+        padding: var(--space-md) var(--space-lg);
+        font-size: 15px;
+    }
+    
+    .edit-btn button {
+        padding: var(--space-md) var(--space-xl);
+        font-size: 15px;
+    }
+}
 
-  input {
-    font-size: 0.95rem;
-  }
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+.input-row input:focus {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+
+@media print {
+    .fundraising-wrapper {
+        background: var(--white);
+        padding: 0;
+    }
+    
+    .account-container {
+        box-shadow: none;
+        border: 2px solid var(--border-gray);
+    }
+    
+    .settings-btn,
+    .action-wrapper {
+        display: none;
+    }
+    
+    .fundraiser-badge {
+        background: var(--border-gray) !important;
+        color: var(--dark-gray) !important;
+    }
+    
+    .header-section::before {
+        content: 'Fundraising Platform - Account Information';
+        position: absolute;
+        top: 10px;
+        left: 20px;
+        font-size: 12px;
+        color: var(--text-gray);
+    }
+}
+
+
+.input-row:hover span::before {
+    background: var(--primary-color);
+    transform: translateY(-50%) scale(1.2);
+    transition: all var(--transition-smooth);
+}
+
+.form-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 20px;
+    right: 20px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--donation-green), transparent);
+    opacity: 0.3;
+}
+
+
+@keyframes inspire {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.account-container:hover .fundraiser-badge {
+    animation: inspire 1.5s infinite ease-in-out;
 }

@@ -67,7 +67,7 @@ const [postsUpdated, setPostsUpdated] = useState(false)
           <Route path="/posts/new" element={<AddPost onPostChange={onPostChange} />} />
           <Route path="/edit-post/:id" element={<EditPost onPostChange={onPostChange}/>} />
           <Route path="/posts/:id" element={<PostDetail onPostChange={onPostChange} />} />
-          <Route path="/my-donations" element={<DonationList />} />
+          <Route path="/my-donations" element={<DonationList user={user}/>} />
           <Route path="/posts/:postId/donations" element={<Donation />} />
           <Route path="/account" element={<Account  />} />
           <Route path="/account/edit" element={<EditAccount />} />

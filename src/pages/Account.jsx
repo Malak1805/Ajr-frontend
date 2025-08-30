@@ -20,42 +20,67 @@ const navigate = useNavigate()
 
   
   return (
-    <div className="account-container">
-      <div className="settings-btn">
-        <Link to="/account/settings">
-          <button>Settings</button>
-        </Link>
-      </div>
-      <h2>Account Info</h2>
+    <div className="fundraising-wrapper">
+      <div className="account-container">
+        <div className="header-section">
+          <div className="settings-btn">
+            <Link to="/account/settings">
+              <button>Settings</button>
+            </Link>
+          </div>
+          <div className="title-wrapper">
+            <div className="fundraiser-badge">
+              <i className="fas fa-heart"></i>
+            </div>
+            <h2>Account Info</h2>
+            <p className="platform-tagline">Building communities, changing lives</p>
+          </div>
+        </div>
 
-      <label>
-        <span>First Name:</span>
-        <input type="text" value={user.first_name} readOnly />
-      </label>
+        <div className="form-container">
+          <div className="input-section">
+            <div className="input-row">
+              <label>
+                <span>First Name:</span>
+                <input type="text" value={user.first_name} readOnly />
+              </label>
+            </div>
 
-      <label>
-        <span>Last Name:</span>
-        <input type="text" value={user.last_name} readOnly />
-      </label>
-      <label>
-        <span>Email:</span>
-        <input type="email" value={user.email} readOnly />
-      </label>
+            <div className="input-row">
+              <label>
+                <span>Last Name:</span>
+                <input type="text" value={user.last_name} readOnly />
+              </label>
+            </div>
 
-      <label>
-        <span>Address:</span>
-        <input type="text" value={user.address} readOnly />
-      </label>
+            <div className="input-row">
+              <label>
+                <span>Email:</span>
+                <input type="email" value={user.email} readOnly />
+              </label>
+            </div>
 
-       <label>
-        <span>Phone Number:</span>
-        <input type="text" value={user.phone_number} readOnly />
-      </label>
+            <div className="input-row">
+              <label>
+                <span>Address:</span>
+                <input type="text" value={user.address} readOnly />
+              </label>
+            </div>
 
-     
+            <div className="input-row">
+              <label>
+                <span>Phone Number:</span>
+                <input type="text" value={user.phone_number} readOnly />
+              </label>
+            </div>
+          </div>
 
-      <div className="edit-btn">
-        <button onClick={() => handleEditToggle()}>Edit Profile</button>
+          <div className="action-wrapper">
+            <div className="edit-btn">
+              <button onClick={() => handleEditToggle()}>Edit Profile</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )
