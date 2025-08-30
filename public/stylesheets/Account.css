@@ -1,60 +1,52 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
+/* ==========================================
+   CREATIVE WHITE BACKGROUND ACCOUNT STYLES
+   Elegant, Modern & Professional Design
+   File: white-account.css
+   ========================================== */
 
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
 
+/* Creative White Theme Variables */
 :root {
-    
+    /* Premium Accent Colors */
     --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     --primary-color: #667eea;
-    --primary-dark: #5a6fd8;
     --primary-light: rgba(102, 126, 234, 0.1);
+    --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --accent-teal: #4facfe;
+    --success-green: #38ef7d;
+    --warm-coral: #ff6b6b;
+    --gold-accent: #f1c40f;
     
+    /* White Theme Palette */
+    --pure-white: #ffffff;
+    --soft-white: #fefefe;
+    --cloud-white: #fbfcfd;
+    --pearl-white: #f8fafc;
+    --light-gray: #f1f5f9;
+    --border-light: #e2e8f0;
+    --border-medium: #cbd5e0;
+    --text-primary: #1a202c;
+    --text-secondary: #4a5568;
+    --text-light: #718096;
     
-    --heart-red: #e74c3c;
-    --warm-orange: #f39c12;
-    --hope-green: #2ecc71;
-    --trust-blue: #3498db;
-    --caring-purple: #9b59b6;
+    /* Creative Shadows */
+    --shadow-minimal: 0 1px 3px rgba(0, 0, 0, 0.02);
+    --shadow-soft: 0 4px 6px rgba(0, 0, 0, 0.03);
+    --shadow-gentle: 0 8px 15px rgba(0, 0, 0, 0.04);
+    --shadow-medium: 0 10px 25px rgba(0, 0, 0, 0.06);
+    --shadow-bold: 0 20px 40px rgba(0, 0, 0, 0.08);
+    --shadow-dramatic: 0 25px 50px rgba(0, 0, 0, 0.12);
+    --shadow-colored: 0 10px 30px rgba(102, 126, 234, 0.15);
+    --shadow-glow: 0 0 20px rgba(102, 126, 234, 0.2);
     
+    /* Smooth Transitions */
+    --transition-swift: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-elegant: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    --transition-bounce: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     
-    --donation-green: #27ae60;
-    --progress-gold: #f1c40f;
-    --impact-coral: #ff6b6b;
-    --community-teal: #1abc9c;
-    
-    
-    --white: #ffffff;
-    --cream: #fefefe;
-    --light-gray: #f8fafc;
-    --soft-gray: #f1f5f9;
-    --medium-gray: #e2e8f0;
-    --border-gray: #cbd5e0;
-    --text-gray: #64748b;
-    --dark-gray: #334155;
-    --charcoal: #1e293b;
-    --deep-navy: #0f172a;
-    
-    --shadow-whisper: 0 1px 3px rgba(0, 0, 0, 0.04);
-    --shadow-gentle: 0 4px 6px rgba(0, 0, 0, 0.05);
-    --shadow-soft: 0 8px 15px rgba(0, 0, 0, 0.08);
-    --shadow-medium: 0 10px 25px rgba(0, 0, 0, 0.1);
-    --shadow-strong: 0 20px 40px rgba(0, 0, 0, 0.15);
-    --shadow-dramatic: 0 25px 50px rgba(0, 0, 0, 0.25);
-    --shadow-glow: 0 0 0 4px rgba(102, 126, 234, 0.12);
-    --shadow-heart: 0 0 20px rgba(231, 76, 60, 0.2);
-    
-    --transition-quick: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-elegant: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    
-    --radius-sm: 8px;
-    --radius-md: 12px;
-    --radius-lg: 16px;
-    --radius-xl: 20px;
-    --radius-2xl: 24px;
-    --radius-3xl: 32px;
-    --radius-full: 9999px;
-    
+    /* Modern Spacing */
     --space-xs: 0.5rem;
     --space-sm: 0.75rem;
     --space-md: 1rem;
@@ -64,38 +56,27 @@
     --space-3xl: 3rem;
     --space-4xl: 4rem;
     --space-5xl: 5rem;
-    --space-6xl: 6rem;
+    
+    /* Creative Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+    --radius-2xl: 24px;
+    --radius-3xl: 32px;
+    --radius-full: 9999px;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-    font-size: 16px;
-    line-height: 1.6;
-    color: var(--dark-gray);
-    background: var(--light-gray);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-
+/* Beautiful White Background Wrapper */
 .fundraising-wrapper {
     min-height: 100vh;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    background-attachment: fixed;
-    padding: var(--space-xl);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background: var(--pure-white);
+    padding: var(--space-4xl) var(--space-xl);
     position: relative;
     overflow: hidden;
 }
 
+/* Creative Background Patterns */
 .fundraising-wrapper::before {
     content: '';
     position: absolute;
@@ -104,44 +85,47 @@ body {
     right: 0;
     bottom: 0;
     background: 
-        radial-gradient(circle at 20% 20%, rgba(46, 204, 113, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(231, 76, 60, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 50% 50%, rgba(52, 152, 219, 0.06) 0%, transparent 50%);
+        radial-gradient(circle at 10% 20%, rgba(102, 126, 234, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 90% 80%, rgba(255, 107, 107, 0.02) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(79, 172, 254, 0.01) 0%, transparent 70%);
     pointer-events: none;
+    z-index: 1;
 }
 
+/* Subtle Geometric Pattern */
 .fundraising-wrapper::after {
     content: '';
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
-    animation: float 20s infinite linear;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        linear-gradient(30deg, rgba(102, 126, 234, 0.005) 12%, transparent 12.5%, transparent 87%, rgba(102, 126, 234, 0.005) 87.5%, rgba(102, 126, 234, 0.005)),
+        linear-gradient(150deg, rgba(102, 126, 234, 0.005) 12%, transparent 12.5%, transparent 87%, rgba(102, 126, 234, 0.005) 87.5%, rgba(102, 126, 234, 0.005)),
+        linear-gradient(30deg, rgba(102, 126, 234, 0.005) 12%, transparent 12.5%, transparent 87%, rgba(102, 126, 234, 0.005) 87.5%, rgba(102, 126, 234, 0.005)),
+        linear-gradient(150deg, rgba(102, 126, 234, 0.005) 12%, transparent 12.5%, transparent 87%, rgba(102, 126, 234, 0.005) 87.5%, rgba(102, 126, 234, 0.005));
+    background-size: 80px 140px;
     pointer-events: none;
+    z-index: 1;
 }
 
-@keyframes float {
-    0% { transform: translate(0, 0); }
-    100% { transform: translate(-60px, -60px); }
-}
-
-
+/* Elegant Account Container */
 .account-container {
-    background: var(--white);
+    background: var(--soft-white);
     border-radius: var(--radius-3xl);
     box-shadow: var(--shadow-dramatic);
     width: 100%;
-    max-width: 800px;
+    max-width: 900px;
+    margin: 0 auto;
     position: relative;
     overflow: hidden;
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    animation: slideInScale 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border: 1px solid var(--border-light);
+    animation: containerFloat 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 2;
 }
 
-@keyframes slideInScale {
+@keyframes containerFloat {
     0% {
         opacity: 0;
         transform: translateY(40px) scale(0.95);
@@ -152,6 +136,7 @@ body {
     }
 }
 
+/* Creative Top Border */
 .account-container::before {
     content: '';
     position: absolute;
@@ -159,23 +144,30 @@ body {
     left: 0;
     right: 0;
     height: 6px;
-    background: linear-gradient(90deg, var(--donation-green), var(--hope-green), var(--community-teal));
-    border-radius: var(--radius-3xl) var(--radius-3xl) 0 0;
+    background: var(--primary-gradient);
+    background-size: 200% 200%;
+    animation: gradientShift 4s ease-in-out infinite;
 }
 
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
 
+/* Beautiful Header Section */
 .header-section {
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.02) 0%, rgba(46, 204, 113, 0.02) 100%);
-    padding: var(--space-3xl) var(--space-xl) var(--space-2xl);
-    border-bottom: 1px solid var(--medium-gray);
+    background: linear-gradient(135deg, var(--cloud-white) 0%, var(--pearl-white) 100%);
+    padding: var(--space-4xl) var(--space-xl) var(--space-3xl);
+    border-bottom: 1px solid var(--border-light);
     position: relative;
     text-align: center;
 }
 
+/* Elegant Settings Button */
 .settings-btn {
     position: absolute;
-    top: var(--space-lg);
-    right: var(--space-lg);
+    top: var(--space-xl);
+    right: var(--space-xl);
     z-index: 10;
 }
 
@@ -184,114 +176,137 @@ body {
 }
 
 .settings-btn button {
-    background: var(--white);
-    border: 2px solid var(--border-gray);
+    background: var(--pure-white);
+    border: 2px solid var(--border-medium);
     border-radius: var(--radius-full);
     padding: var(--space-sm) var(--space-lg);
-    color: var(--text-gray);
-    font-weight: 500;
+    color: var(--text-secondary);
+    font-weight: 600;
     font-size: 14px;
     cursor: pointer;
     transition: all var(--transition-smooth);
-    box-shadow: var(--shadow-gentle);
-    display: flex;
-    align-items: center;
-    gap: var(--space-xs);
+    box-shadow: var(--shadow-soft);
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .settings-btn button::before {
-    content: '⚙️';
-    font-size: 16px;
+    content: '⚙️ ';
+    margin-right: var(--space-xs);
 }
 
 .settings-btn button:hover {
     background: var(--primary-color);
     border-color: var(--primary-color);
-    color: var(--white);
-    box-shadow: var(--shadow-medium);
-    transform: translateY(-2px);
+    color: var(--pure-white);
+    box-shadow: var(--shadow-colored);
+    transform: translateY(-2px) scale(1.05);
 }
 
+/* Creative Title Wrapper */
 .title-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--space-md);
+    gap: var(--space-lg);
+    position: relative;
 }
 
+/* Stunning Fundraiser Badge */
 .fundraiser-badge {
-    width: 100px;
-    height: 100px;
-    background: linear-gradient(135deg, var(--heart-red), var(--impact-coral));
+    width: 120px;
+    height: 120px;
+    background: var(--pure-white);
     border-radius: var(--radius-full);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--white);
-    font-size: 40px;
-    box-shadow: var(--shadow-heart);
+    color: var(--warm-coral);
+    font-size: 48px;
+    box-shadow: var(--shadow-bold);
+    border: 4px solid var(--border-light);
     position: relative;
     overflow: hidden;
-    animation: heartbeat 2s infinite;
+    animation: badgePulse 3s infinite ease-in-out;
 }
 
-@keyframes heartbeat {
-    0%, 50%, 100% { transform: scale(1); }
-    25%, 75% { transform: scale(1.1); }
+@keyframes badgePulse {
+    0%, 100% { 
+        transform: scale(1);
+        box-shadow: var(--shadow-bold);
+    }
+    50% { 
+        transform: scale(1.05);
+        box-shadow: var(--shadow-dramatic), 0 0 25px rgba(255, 107, 107, 0.3);
+    }
 }
 
-.fundraiser-badge::after {
+.fundraiser-badge::before {
     content: '';
     position: absolute;
     top: -50%;
     left: -50%;
     width: 200%;
     height: 200%;
-    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    background: linear-gradient(45deg, transparent, rgba(255, 107, 107, 0.1), transparent);
     transform: rotate(45deg);
-    animation: compassionShine 3s infinite;
+    animation: badgeShine 4s infinite;
 }
 
-@keyframes compassionShine {
+@keyframes badgeShine {
     0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
     100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
 }
 
+/* Elegant Title Styling */
 .title-wrapper h2 {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Playfair Display', serif;
     font-size: 2.5rem;
     font-weight: 700;
-    color: var(--charcoal);
+    color: var(--text-primary);
     margin: 0;
     letter-spacing: -0.02em;
-    background: linear-gradient(135deg, var(--charcoal), var(--primary-color));
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    position: relative;
 }
 
+.title-wrapper h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: var(--secondary-gradient);
+    border-radius: var(--radius-full);
+}
+
+/* Beautiful Tagline */
 .platform-tagline {
     font-family: 'Poppins', sans-serif;
-    font-size: 1rem;
-    color: var(--text-gray);
+    font-size: 1.1rem;
+    color: var(--text-light);
     font-weight: 400;
     font-style: italic;
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
-
+/* Clean Form Container */
 .form-container {
-    padding: var(--space-3xl) var(--space-xl);
-    background: var(--white);
+    padding: var(--space-4xl) var(--space-xl);
+    background: var(--pure-white);
 }
 
+/* Organized Input Section */
 .input-section {
-    margin-bottom: var(--space-2xl);
+    margin-bottom: var(--space-3xl);
 }
 
+/* Beautiful Input Rows */
 .input-row {
-    margin-bottom: var(--space-xl);
-    animation: gentleFadeIn 0.6s ease-out backwards;
+    margin-bottom: var(--space-2xl);
+    animation: inputSlide 0.6s ease-out backwards;
 }
 
 .input-row:nth-child(1) { animation-delay: 0.1s; }
@@ -300,17 +315,18 @@ body {
 .input-row:nth-child(4) { animation-delay: 0.4s; }
 .input-row:nth-child(5) { animation-delay: 0.5s; }
 
-@keyframes gentleFadeIn {
-    from {
+@keyframes inputSlide {
+    0% {
         opacity: 0;
-        transform: translateY(15px);
+        transform: translateX(-20px);
     }
-    to {
+    100% {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateX(0);
     }
 }
 
+/* Elegant Labels */
 .input-row label {
     display: block;
     position: relative;
@@ -321,78 +337,103 @@ body {
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     font-size: 15px;
-    color: var(--dark-gray);
+    color: var(--text-primary);
     margin-bottom: var(--space-sm);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.8px;
     position: relative;
+    padding-left: var(--space-lg);
 }
 
+/* Creative Label Icons */
 .input-row span::before {
     content: '';
     position: absolute;
-    left: -20px;
+    left: 0;
     top: 50%;
     transform: translateY(-50%);
-    width: 3px;
-    height: 15px;
-    background: var(--donation-green);
-    border-radius: var(--radius-sm);
+    width: 4px;
+    height: 16px;
+    background: var(--primary-gradient);
+    border-radius: var(--radius-full);
+    transition: all var(--transition-smooth);
 }
 
+.input-row:hover span::before {
+    width: 6px;
+    height: 20px;
+    background: var(--secondary-gradient);
+}
+
+/* Premium Input Styling */
 .input-row input {
     width: 100%;
     padding: var(--space-lg) var(--space-xl);
-    border: 2px solid var(--border-gray);
+    border: 2px solid var(--border-light);
     border-radius: var(--radius-xl);
-    background: var(--soft-gray);
+    background: var(--cloud-white);
     font-size: 16px;
     font-weight: 500;
-    color: var(--charcoal);
+    color: var(--text-primary);
     transition: all var(--transition-smooth);
-    box-shadow: var(--shadow-whisper);
+    box-shadow: var(--shadow-minimal);
     font-family: 'Inter', sans-serif;
+    position: relative;
 }
 
 .input-row input:focus {
     outline: none;
     border-color: var(--primary-color);
-    background: var(--white);
-    box-shadow: var(--shadow-glow), var(--shadow-soft);
+    background: var(--pure-white);
+    box-shadow: var(--shadow-glow), var(--shadow-gentle);
     transform: translateY(-2px);
 }
 
 .input-row input:hover:not(:focus) {
-    border-color: var(--primary-light);
-    background: var(--cream);
-    box-shadow: var(--shadow-gentle);
+    border-color: var(--border-medium);
+    background: var(--soft-white);
+    box-shadow: var(--shadow-soft);
+    transform: translateY(-1px);
 }
 
-
+/* Inspiring Action Wrapper */
 .action-wrapper {
     text-align: center;
-    padding-top: var(--space-xl);
-    border-top: 1px solid var(--medium-gray);
-    background: linear-gradient(135deg, var(--light-gray) 0%, var(--white) 100%);
+    padding-top: var(--space-2xl);
+    border-top: 1px solid var(--border-light);
+    background: linear-gradient(135deg, var(--pearl-white) 0%, var(--pure-white) 100%);
+    position: relative;
 }
 
+.action-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 1px;
+    background: var(--primary-gradient);
+}
+
+/* Stunning Edit Button */
 .edit-btn button {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, var(--donation-green), var(--hope-green));
-    border: none;
+    background: var(--pure-white);
+    border: 3px solid var(--primary-color);
     border-radius: var(--radius-full);
-    padding: var(--space-lg) var(--space-3xl);
-    color: var(--white);
-    font-weight: 600;
+    padding: var(--space-lg) var(--space-4xl);
+    color: var(--primary-color);
+    font-weight: 700;
     font-size: 16px;
     cursor: pointer;
     transition: all var(--transition-bounce);
-    box-shadow: var(--shadow-medium);
+    box-shadow: var(--shadow-gentle);
     position: relative;
     overflow: hidden;
     text-transform: uppercase;
     letter-spacing: 1px;
-    min-width: 200px;
+    min-width: 220px;
 }
 
 .edit-btn button::before {
@@ -402,49 +443,51 @@ body {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    background: var(--primary-gradient);
     transition: left var(--transition-elegant);
-}
-
-.edit-btn button:hover {
-    background: linear-gradient(135deg, var(--hope-green), var(--community-teal));
-    box-shadow: var(--shadow-strong);
-    transform: translateY(-4px) scale(1.02);
+    z-index: -1;
 }
 
 .edit-btn button:hover::before {
-    left: 100%;
+    left: 0;
+}
+
+.edit-btn button:hover {
+    color: var(--pure-white);
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-colored);
+    transform: translateY(-4px) scale(1.05);
 }
 
 .edit-btn button:active {
-    transform: translateY(-2px) scale(1.01);
+    transform: translateY(-2px) scale(1.02);
 }
 
 .edit-btn button::after {
-    content: '💝';
+    content: '✨';
     margin-left: var(--space-sm);
     font-size: 18px;
 }
 
-
+/* Responsive Design Excellence */
 @media (max-width: 768px) {
     .fundraising-wrapper {
-        padding: var(--space-md);
+        padding: var(--space-xl) var(--space-md);
     }
     
     .header-section {
-        padding: var(--space-2xl) var(--space-lg) var(--space-xl);
+        padding: var(--space-3xl) var(--space-lg) var(--space-2xl);
     }
     
     .settings-btn {
-        top: var(--space-md);
-        right: var(--space-md);
+        top: var(--space-lg);
+        right: var(--space-lg);
     }
     
     .fundraiser-badge {
-        width: 80px;
-        height: 80px;
-        font-size: 32px;
+        width: 100px;
+        height: 100px;
+        font-size: 40px;
     }
     
     .title-wrapper h2 {
@@ -452,11 +495,11 @@ body {
     }
     
     .form-container {
-        padding: var(--space-2xl) var(--space-lg);
+        padding: var(--space-3xl) var(--space-lg);
     }
     
     .input-row {
-        margin-bottom: var(--space-lg);
+        margin-bottom: var(--space-xl);
     }
     
     .edit-btn button {
@@ -467,13 +510,13 @@ body {
 
 @media (max-width: 480px) {
     .fundraising-wrapper {
-        padding: var(--space-sm);
+        padding: var(--space-lg) var(--space-sm);
     }
     
     .fundraiser-badge {
-        width: 70px;
-        height: 70px;
-        font-size: 28px;
+        width: 80px;
+        height: 80px;
+        font-size: 32px;
     }
     
     .title-wrapper h2 {
@@ -486,12 +529,12 @@ body {
     }
     
     .edit-btn button {
-        padding: var(--space-md) var(--space-xl);
+        padding: var(--space-md) var(--space-2xl);
         font-size: 15px;
     }
 }
 
-
+/* Premium Accessibility */
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -500,21 +543,22 @@ body {
     }
 }
 
-.input-row input:focus {
+.input-row input:focus,
+.edit-btn button:focus {
     outline: 3px solid var(--primary-color);
     outline-offset: 2px;
 }
 
-
+/* Print Optimization */
 @media print {
     .fundraising-wrapper {
-        background: var(--white);
+        background: var(--pure-white);
         padding: 0;
     }
     
     .account-container {
         box-shadow: none;
-        border: 2px solid var(--border-gray);
+        border: 2px solid var(--border-medium);
     }
     
     .settings-btn,
@@ -523,44 +567,34 @@ body {
     }
     
     .fundraiser-badge {
-        background: var(--border-gray) !important;
-        color: var(--dark-gray) !important;
-    }
-    
-    .header-section::before {
-        content: 'Fundraising Platform - Account Information';
-        position: absolute;
-        top: 10px;
-        left: 20px;
-        font-size: 12px;
-        color: var(--text-gray);
+        background: var(--light-gray) !important;
+        color: var(--text-primary) !important;
     }
 }
 
-
-.input-row:hover span::before {
-    background: var(--primary-color);
-    transform: translateY(-50%) scale(1.2);
-    transition: all var(--transition-smooth);
+/* Special Effects for Premium Feel */
+.input-row:hover {
+    transform: translateX(5px);
 }
 
 .form-container::before {
     content: '';
     position: absolute;
     top: 0;
-    left: 20px;
-    right: 20px;
+    left: var(--space-xl);
+    right: var(--space-xl);
     height: 1px;
-    background: linear-gradient(90deg, transparent, var(--donation-green), transparent);
-    opacity: 0.3;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+    opacity: 0.2;
 }
 
 
-@keyframes inspire {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.7; }
+@keyframes floatElements {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    33% { transform: translateY(-10px) rotate(1deg); }
+    66% { transform: translateY(5px) rotate(-1deg); }
 }
 
-.account-container:hover .fundraiser-badge {
-    animation: inspire 1.5s infinite ease-in-out;
+.fundraiser-badge {
+    animation: floatElements 6s infinite ease-in-out;
 }

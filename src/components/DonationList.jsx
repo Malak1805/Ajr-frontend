@@ -42,7 +42,13 @@ const DonationList = ({ user }) => {
 
     return (
 <div className="donations-page">
-  <h1>{user.first_name ? `${user.first_name}'s Donation List!` : 'Donation List!'}</h1>
+  <h1>{user.first_name ? (
+          <>
+            <span className="user-name">{user.first_name}</span>'s Donation List!
+          </>
+        ) : (
+          'Donation List!'
+        )}</h1>
 
   {donatedPosts.length === 0 ? (
     <div className="empty-state">

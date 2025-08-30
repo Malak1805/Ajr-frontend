@@ -1,203 +1,675 @@
 
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --hero-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --success-gradient: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    --heart-gradient: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+    --gold-gradient: linear-gradient(135deg, #f7971e 0%, #ffd200 100%);
+    
+    --donation-primary: #667eea;
+    --donation-secondary: #4facfe;
+    --hope-green: #38ef7d;
+    --compassion-coral: #ff6b6b;
+    --trust-blue: #4facfe;
+    --warmth-orange: #ff9a56;
+    --inspiration-purple: #a8edea;
+    --community-teal: #00f2fe;
+    
+    --white: #ffffff;
+    --pearl: #fefefe;
+    --cloud: #f8fafc;
+    --mist: #f1f5f9;
+    --silver: #e2e8f0;
+    --slate: #cbd5e0;
+    --stone: #94a3b8;
+    --charcoal: #475569;
+    --midnight: #1e293b;
+    --obsidian: #0f172a;
+    
+    --shadow-whisper: 0 1px 3px rgba(0, 0, 0, 0.03);
+    --shadow-soft: 0 4px 6px rgba(0, 0, 0, 0.04);
+    --shadow-gentle: 0 8px 15px rgba(0, 0, 0, 0.06);
+    --shadow-medium: 0 10px 25px rgba(0, 0, 0, 0.08);
+    --shadow-strong: 0 20px 40px rgba(0, 0, 0, 0.12);
+    --shadow-dramatic: 0 25px 50px rgba(0, 0, 0, 0.2);
+    --shadow-magical: 0 35px 60px rgba(102, 126, 234, 0.4);
+    --shadow-glow: 0 0 20px rgba(102, 126, 234, 0.3);
+    --shadow-heart: 0 0 30px rgba(255, 107, 107, 0.4);
+    --shadow-success: 0 0 25px rgba(56, 239, 125, 0.3);
+    
+    --transition-swift: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-elegant: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    --transition-bounce: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-magic: 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    
+   
+    --space-xs: 0.5rem;
+    --space-sm: 0.75rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 2.5rem;
+    --space-3xl: 3rem;
+    --space-4xl: 4rem;
+    --space-5xl: 5rem;
+    --space-6xl: 6rem;
+    --space-8xl: 8rem;
+    
+ 
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+    --radius-2xl: 24px;
+    --radius-3xl: 32px;
+    --radius-4xl: 40px;
+    --radius-full: 9999px;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--cloud);
+    color: var(--charcoal);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+
 .donations-page {
-  position: relative;
-  min-height: 100vh;
-  padding: 80px 20px;
-  font-family: 'Inter', sans-serif;
-  background: linear-gradient(180deg, #ffffff 0%, #f7f7f7 100%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow-x: hidden;
-}
-
-
-.donations-page::before,
-.donations-page::after {
-  content: '';
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  border-radius: 50%;
-  background: rgba(102, 126, 234, 0.08);
-  filter: blur(120px);
-  z-index: 0;
-  animation: floatParticles 25s ease-in-out infinite alternate;
-}
-
-.donations-page::after {
-  top: 100px;
-  left: 50%;
-  background: rgba(255, 107, 107, 0.08);
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ffffff 0%, #f6f6f6 50%, #b6cde1 100%);
+    background-attachment: fixed;
+    padding: var(--space-4xl) var(--space-xl);
+    position: relative;
+    overflow: hidden;
 }
 
 .donations-page::before {
-  top: 300px;
-  left: 20%;
-  background: rgba(72, 187, 120, 0.08);
-}
-
-@keyframes floatParticles {
-  0% { transform: translate(0, 0) rotate(0deg); }
-  50% { transform: translate(40px, 50px) rotate(45deg); }
-  100% { transform: translate(-30px, -40px) rotate(90deg); }
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(56, 239, 125, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255, 107, 107, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 40% 90%, rgba(79, 172, 254, 0.06) 0%, transparent 50%),
+        radial-gradient(circle at 60% 10%, rgba(168, 237, 234, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 1;
 }
 
 
 .donations-page h1 {
-  color: #1a202c;
-  font-size: 3rem;
-  margin-bottom: 50px;
-  text-align: center;
-  font-weight: 700;
-  position: relative;
-  z-index: 1;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: var(--space-5xl);
+    color: var(--white);
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 2;
+    animation: titleMagic 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    letter-spacing: -0.02em;
+}
+
+.donations-page h1 .user-name {
+    background: linear-gradient(135deg, #6cd184 0%, #76da80 25%, #8de2ac 50%, #91e1b1 75%, #48ce63 100%);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: rainbowShift 3s ease-in-out infinite, nameGlow 2s ease-in-out infinite alternate;
+    display: inline-block;
+    position: relative;
+    text-shadow: none;
+}
+
+.donations-page h1 .user-name::before {
+    content: '💎';
+    position: absolute;
+    left: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.6em;
+    animation: sparkle 1.5s infinite alternate;
+}
+
+.donations-page h1 .user-name::after {
+    content: '🎯';
+    position: absolute;
+    right: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.6em;
+    animation: sparkle 1.5s infinite alternate-reverse;
+}
+
+.donations-page h1::before {
+    content: '💖';
+    display: block;
+    font-size: 3rem;
+    margin-bottom: var(--space-md);
+    animation: heartFloat 3s infinite ease-in-out;
+}
+
+.donations-page h1::before {
+    content: '💸';
+    display: block;
+    font-size: 3rem;
+    margin-bottom: var(--space-md);
+    animation: heartFloat 3s infinite ease-in-out;
+}
+
+.donations-page h1::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 4px;
+    background: var(--gold-gradient);
+    border-radius: var(--radius-full);
+    box-shadow: var(--shadow-glow);
+}
+
+@keyframes titleMagic {
+    0% {
+        opacity: 0;
+        transform: translateY(50px) scale(0.8);
+        filter: blur(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+@keyframes heartFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(5deg); }
 }
 
 
 .empty-state {
-  text-align: center;
-  color: #4a5568;
-  padding: 120px 20px;
-  position: relative;
-  z-index: 1;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: var(--radius-4xl);
+    padding: var(--space-6xl);
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: var(--shadow-dramatic);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    z-index: 2;
+    animation: gentleFloat 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.empty-state::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: var(--primary-gradient);
+    border-radius: var(--radius-4xl);
+    z-index: -1;
+    opacity: 0.1;
+}
+
+.empty-state h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--midnight);
+    margin-bottom: var(--space-lg);
+    position: relative;
+}
+
+.empty-state h3::before {
+    content: '🌟';
+    display: block;
+    font-size: 4rem;
+    margin-bottom: var(--space-md);
+    animation: starTwinkle 2s infinite alternate;
+}
+
+.empty-state p {
+    font-size: 1.2rem;
+    color: var(--stone);
+    line-height: 1.7;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+@keyframes gentleFloat {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes starTwinkle {
+    0% { opacity: 0.7; transform: scale(1); }
+    100% { opacity: 1; transform: scale(1.1); }
 }
 
 
 .donations-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 32px;
-  width: 100%;
-  max-width: 1200px;
-  position: relative;
-  z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: var(--space-2xl);
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
 }
 
-
 .donation-card {
-  position: relative;
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 20px;
-  padding: 40px 30px;
-  overflow: hidden;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-  transition: all 0.4s ease;
-  cursor: pointer;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.8s forwards;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: var(--radius-3xl);
+    padding: var(--space-2xl);
+    box-shadow: var(--shadow-strong);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+    transition: all var(--transition-elegant);
+    animation: cardEntrance 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) backwards;
+    cursor: pointer;
 }
 
 .donation-card:nth-child(1) { animation-delay: 0.1s; }
 .donation-card:nth-child(2) { animation-delay: 0.2s; }
 .donation-card:nth-child(3) { animation-delay: 0.3s; }
 .donation-card:nth-child(4) { animation-delay: 0.4s; }
+.donation-card:nth-child(5) { animation-delay: 0.5s; }
+.donation-card:nth-child(6) { animation-delay: 0.6s; }
 
-@keyframes fadeInUp {
-  to { opacity: 1; transform: translateY(0); }
+@keyframes cardEntrance {
+    0% {
+        opacity: 0;
+        transform: translateY(40px) scale(0.9);
+        filter: blur(5px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
 }
 
+.donation-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: var(--success-gradient);
+    border-radius: var(--radius-3xl) var(--radius-3xl) 0 0;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--transition-elegant);
+}
+
+.donation-card:hover::before {
+    transform: scaleX(1);
+}
 
 .donation-card:hover {
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 25px 60px rgba(0,0,0,0.15);
-  border-color: #cbd5e0;
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-magical);
+    border-color: rgba(102, 126, 234, 0.3);
 }
 
+.donation-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: rotate(45deg) translate(-100%, -100%);
+    transition: transform var(--transition-magic);
+    pointer-events: none;
+}
+
+.donation-card:hover::after {
+    transform: rotate(45deg) translate(100%, 100%);
+}
+
+.donation-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    margin-bottom: var(--space-xl);
+}
 
 .donation-title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #1a202c;
-  margin-bottom: 10px;
-  position: relative;
-  z-index: 1;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--midnight);
+    margin-bottom: var(--space-sm);
+    line-height: 1.3;
+    transition: color var(--transition-smooth);
+    position: relative;
+    z-index: 1;
+}
+
+.donation-card:hover .donation-title {
+    color: var(--donation-primary);
 }
 
 .underline {
-  height: 4px;
-  width: 70px;
-  border-radius: 2px;
-  background: linear-gradient(90deg, #667eea, #764ba2);
-  margin-bottom: 16px;
+    width: 60px;
+    height: 3px;
+    background: var(--heart-gradient);
+    border-radius: var(--radius-full);
+    margin: var(--space-sm) 0 var(--space-lg) 0;
+    transition: all var(--transition-elegant);
+    box-shadow: var(--shadow-heart);
 }
 
+.donation-card:hover .underline {
+    width: 100px;
+    background: var(--success-gradient);
+    box-shadow: var(--shadow-success);
+}
 
 .donation-description {
-  color: #4a5568;
-  font-size: 1.1rem;
-  line-height: 1.7;
-  margin-bottom: 24px;
+    font-size: 1rem;
+    color: var(--stone);
+    line-height: 1.6;
+    margin-bottom: var(--space-lg);
+    font-weight: 400;
 }
 
-
 .donation-progress-container {
-  width: 100%;
-  height: 12px;
-  background: #e2e8f0;
-  border-radius: 6px;
-  overflow: hidden;
-  margin: 20px 0;
+    background: rgba(226, 232, 240, 0.5);
+    height: 12px;
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    margin-bottom: var(--space-lg);
+    position: relative;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.donation-progress-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
+    animation: progressShimmer 2s infinite;
+}
+
+@keyframes progressShimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
 }
 
 .donation-progress-bar {
-height: 100%;
-  background: linear-gradient(90deg, #764ba2, #667eea); 
-  border-radius: 6px;
-  transition: width 0.8s ease-in-out;
-  box-shadow: 0 0 10px rgba(102, 75, 162, 0.3);
+    height: 100%;
+    background: var(--success-gradient);
+    border-radius: var(--radius-full);
+    transition: width var(--transition-magic);
+    position: relative;
+    box-shadow: var(--shadow-success);
+    animation: progressGlow 3s infinite alternate;
 }
 
+@keyframes progressGlow {
+    0% { box-shadow: var(--shadow-success); }
+    100% { box-shadow: 0 0 35px rgba(56, 239, 125, 0.6); }
+}
+
+.donation-progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4));
+    border-radius: var(--radius-full);
+}
 
 .donation-meta {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: #2d3748;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+}
+
+.donation-goal {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: var(--charcoal);
+    font-size: 0.95rem;
 }
 
 .donation-goal span {
-  font-weight: 700;
-  color: #38a169;
-  transition: transform 0.3s ease, color 0.3s ease;
+    color: var(--hope-green);
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
-
-.donation-card:hover .donation-goal span {
-  transform: scale(1.1);
-}
-
 
 .donation-author {
-  font-size: 1rem;
-  color: #718096;
+    font-family: 'Poppins', sans-serif;
+    color: var(--stone);
+    font-weight: 500;
+    font-size: 0.9rem;
+    background: rgba(102, 126, 234, 0.1);
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-full);
+    border: 1px solid rgba(102, 126, 234, 0.2);
 }
 
+.particle-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.particle-background::before,
+.particle-background::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    animation: particleFloat 20s infinite linear;
+}
+
+.particle-background::before {
+    background: radial-gradient(circle, rgba(255, 107, 107, 0.1) 0%, transparent 70%);
+    top: 10%;
+    left: -150px;
+    animation-delay: 0s;
+}
+
+.particle-background::after {
+    background: radial-gradient(circle, rgba(56, 239, 125, 0.1) 0%, transparent 70%);
+    bottom: 10%;
+    right: -150px;
+    animation-delay: -10s;
+    animation-direction: reverse;
+}
+
+@keyframes particleFloat {
+    0% { transform: translateX(0) translateY(0) rotate(0deg); }
+    33% { transform: translateX(100px) translateY(-100px) rotate(120deg); }
+    66% { transform: translateX(-50px) translateY(-200px) rotate(240deg); }
+    100% { transform: translateX(0) translateY(0) rotate(360deg); }
+}
+
+@media (max-width: 1200px) {
+    .donations-grid {
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        gap: var(--space-xl);
+    }
+}
 
 @media (max-width: 768px) {
-  .donations-grid {
-    gap: 24px;
-  }
-  .donation-card {
-    padding: 32px 24px;
-  }
-  .donation-title {
-    font-size: 1.75rem;
-  }
-  .donation-description {
-    font-size: 1rem;
-  }
+    .donations-page {
+        padding: var(--space-3xl) var(--space-md);
+    }
+    
+    .donations-page h1 {
+        font-size: clamp(2rem, 6vw, 3rem);
+        margin-bottom: var(--space-4xl);
+    }
+    
+    .donations-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+    }
+    
+    .donation-card {
+        padding: var(--space-xl);
+    }
+    
+    .donation-title {
+        font-size: 1.3rem;
+    }
+    
+    .empty-state {
+        padding: var(--space-4xl) var(--space-xl);
+        margin: 0 var(--space-md);
+    }
 }
 
 @media (max-width: 480px) {
-  .donation-card {
-    padding: 24px 16px;
-  }
-  .donation-title {
-    font-size: 1.5rem;
-  }
-  .donation-description {
-    font-size: 0.95rem;
-  }
+    .donations-page {
+        padding: var(--space-2xl) var(--space-sm);
+    }
+    
+    .donation-card {
+        padding: var(--space-lg);
+    }
+    
+    .donation-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-sm);
+    }
+    
+    .empty-state h3 {
+        font-size: 2rem;
+    }
+    
+    .empty-state p {
+        font-size: 1.1rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+.donation-card:focus-within {
+    outline: 3px solid var(--donation-primary);
+    outline-offset: 4px;
+}
+
+@media print {
+    .donations-page {
+        background: var(--white);
+        color: var(--midnight);
+    }
+    
+    .donation-card {
+        background: var(--white);
+        border: 2px solid var(--silver);
+        break-inside: avoid;
+        margin-bottom: var(--space-lg);
+    }
+    
+    .particle-background {
+        display: none;
+    }
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .donation-card {
+        transform-origin: center bottom;
+    }
+    
+    .donation-card:hover {
+        animation: cardHoverMagic 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    @keyframes cardHoverMagic {
+        0%, 100% { transform: translateY(-8px) scale(1.02); }
+        50% { transform: translateY(-12px) scale(1.03) rotateX(2deg); }
+    }
+    
+    .donation-progress-bar:hover {
+        animation: progressPulse 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    @keyframes progressPulse {
+        0%, 100% { transform: scaleY(1); }
+        50% { transform: scaleY(1.2); }
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --white: #1a1a1a;
+        --pearl: #1e1e1e;
+        --cloud: #222222;
+        --mist: #2a2a2a;
+        --silver: #333333;
+        --slate: #404040;
+        --charcoal: #e2e2e2;
+        --midnight: #f0f0f0;
+        --obsidian: #ffffff;
+    }
+    
+    .donation-card {
+        background: rgba(26, 26, 26, 0.9);
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .empty-state {
+        background: rgba(26, 26, 26, 0.95);
+    }
 }
