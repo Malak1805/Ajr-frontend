@@ -10,7 +10,8 @@ const AddPost = ({ onPostChange }) => {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [goalAmount, setGoalAmount] = useState('')
-  const [error, setError] = useState(null);
+  const [category, setCategory] = useState('')
+  const [error, setError] = useState(null)
   
    const handleAddPost = async (e) => {
     e.preventDefault();
@@ -19,7 +20,8 @@ const AddPost = ({ onPostChange }) => {
         title: title,
         description: description,
         goal_amount: Number(goalAmount),
-      };
+        category
+      }
 
 
       const token = localStorage.getItem('token');
@@ -91,6 +93,22 @@ const AddPost = ({ onPostChange }) => {
           min="0"
         />
       </div>
+
+      <div className="form-group">
+            <label htmlFor="category">Category</label>
+            <select id="category" value={category}
+              onChange={(e) => setCategory(e.target.value)} required>
+              <option value="">-- Select Category --</option>
+              <option value="Medical & Health">Medical & Health</option>
+              <option value="Education">Education</option>
+              <option value="Disaster Relief">Disaster Relief</option>
+              <option value="Community & Social Causes">Community & Social Causes</option>
+              <option value="Children & Orphans">Children & Orphans</option>
+              <option value="Animal Welfare">Animal Welfare</option>
+              <option value="Environmental Causes">Environmental Causes</option>
+              <option value="Religious & Charity">Religious & Charity</option>
+            </select>
+          </div>
 
       <div className="form-actions">
         <button type="submit">✨ Create Post</button>

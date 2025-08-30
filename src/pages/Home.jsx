@@ -1,5 +1,5 @@
 
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 import '../../public/stylesheets/Home.css'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
@@ -45,8 +45,17 @@ const Home = ({ postsUpdated }) => {
   if (loading) return <div className="loading-message">Loading posts...</div>
   if (error) return <div className="error-message">{error}</div>
 
+const groupedPosts = posts.reduce((groups, post) => { //// Group posts by their category
+  const category = post.category || "Uncategorized"
+  if (!groups[category]) {
+    groups[category] = []
+  }
+  groups[category].push(post)
+  return groups
+}, {})
+
   return (
-    <div className="home-container"> 
+      <div className="home-container">
       <div className="home-header-section">
         <h1 className="home-title">Donation Posts!</h1>
         <Link to="/posts/new" className="create-post-button">
@@ -56,34 +65,41 @@ const Home = ({ postsUpdated }) => {
 
       <Search onSearch={handleSearch} />
 
-      {posts.length === 0 ? (
-        <p className="no-posts-message posts-empty">No posts found.</p> 
+      {Object.keys(groupedPosts).length === 0 ? (
+        <p className="no-posts-message posts-empty">No posts found.</p>
       ) : (
-        <div className="posts-list-container"> 
-          <div className="posts-list"> 
-            {posts.map((post) => (
-              <div key={post._id} className="post-item"> 
-                <Link to={`/posts/${post._id}`} className="post-link"> 
-                  <h2 className="post-title"> 
-                    {post.title}
-                  </h2>
-                  <p className="post-description">{post.description}</p> 
-                  <div className="post-meta"> 
-                    <span className="post-goal"> 
+        Object.keys(groupedPosts).map((category) => (
+          <div key={category} className="category-section">
+            <h2 className="category-title">{category}</h2>
+            <div className="posts-list">
+              {groupedPosts[category].map((post) => (
+                <div key={post._id} className="post-item">
+                  <Link to={`/posts/${post._id}`} className="post-link">
+                    <h2 className="post-title">{post.title}</h2>
+                    <p className="post-description">{post.description}</p>
+                    <div className="post-meta">
+                      <span className="post-goal">
                         Goal: <span>${post.goal_amount.toFixed(2)}</span>
-                    </span>
-                    <span className="post-current">
-                      Current: ${(post.current_amount || 0).toFixed(2)}
-                    </span>
-                  </div>
-                  <div className="post-author"> 
-                    By: {post.userId ? `${post.userId.first_name} ${post.userId.last_name}` : 'Unknown User'}
-                  </div>
-                </Link>
-              </div>
-            ))}
+                      </span>
+                      <span className="post-current">
+                        Current: ${(post.current_amount || 0).toFixed(2)}
+                      </span>
+                    </div>
+                    <div className="post-category">
+                      Category: {post.category || 'Uncategorized'}
+                    </div>
+                    <div className="post-author">
+                      By:{' '}
+                      {post.userId
+                        ? `${post.userId.first_name} ${post.userId.last_name}`
+                        : 'Unknown User'}
+                    </div>
+                  </Link>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        ))
       )}
     </div>
   )

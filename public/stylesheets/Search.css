@@ -1,64 +1,439 @@
-/* Main wrapper to center the search bar */
+/* ==========================================
+   MAGNIFICENT SEARCH BAR STYLES
+   Beautiful, Modern & User-Friendly Design
+   File: searchbar.css
+   ========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+/* Premium Search Bar Variables */
+:root {
+    /* Fundraising Search Colors */
+    --search-primary: #667eea;
+    --search-secondary: #764ba2;
+    --search-accent: #4facfe;
+    --search-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #4facfe 100%);
+    --search-hover: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --search-success: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    
+    /* Glass & Light Effects */
+    --search-glass: rgba(255, 255, 255, 0.9);
+    --search-glass-hover: rgba(255, 255, 255, 0.95);
+    --search-white: #ffffff;
+    --search-light: #f8fafc;
+    --search-border: rgba(102, 126, 234, 0.2);
+    --search-border-focus: rgba(102, 126, 234, 0.4);
+    
+    /* Text Colors */
+    --search-text: #334155;
+    --search-text-light: #64748b;
+    --search-placeholder: #94a3b8;
+    
+    /* Premium Shadows */
+    --search-shadow-subtle: 0 2px 8px rgba(102, 126, 234, 0.08);
+    --search-shadow-soft: 0 4px 20px rgba(102, 126, 234, 0.12);
+    --search-shadow-medium: 0 8px 30px rgba(102, 126, 234, 0.2);
+    --search-shadow-strong: 0 15px 40px rgba(102, 126, 234, 0.3);
+    --search-shadow-glow: 0 0 25px rgba(102, 126, 234, 0.4);
+    --search-shadow-focus: 0 0 0 4px rgba(102, 126, 234, 0.15);
+    
+    /* Smooth Animations */
+    --search-transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --search-bounce: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --search-elastic: 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    
+    /* Modern Spacing & Sizing */
+    --search-height: 60px;
+    --search-radius: 30px;
+    --search-padding: 0 2rem;
+    --search-gap: 0.75rem;
+}
+
+/* Beautiful Search Wrapper */
 .searchbar-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem 1rem;
-  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    position: relative;
+    z-index: 10;
 }
 
-/* Container to hold form */
+.searchbar-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 30% 50%, rgba(102, 126, 234, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 70% 50%, rgba(79, 172, 254, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+/* Stunning Search Container */
 .searchbar-container {
-  width: 100%;
-  max-width: none;
-  background: #ffffff;
-  border-radius: none;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+    width: 100%;
+    max-width: 600px;
+    position: relative;
+    animation: searchEntrance 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* Search form alignment */
+@keyframes searchEntrance {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+        filter: blur(5px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+/* Magnificent Search Form */
 .searchbar-form {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    background: var(--search-glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: var(--search-radius);
+    border: 2px solid var(--search-border);
+    box-shadow: var(--search-shadow-soft);
+    overflow: hidden;
+    transition: all var(--search-transition);
+    position: relative;
 }
 
-/* Input field */
+.searchbar-form::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: var(--search-gradient);
+    border-radius: var(--search-radius);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity var(--search-transition);
+}
+
+.searchbar-form:focus-within::before {
+    opacity: 0.1;
+}
+
+.searchbar-form:focus-within {
+    background: var(--search-white);
+    border-color: var(--search-border-focus);
+    box-shadow: var(--search-shadow-focus), var(--search-shadow-medium);
+    transform: translateY(-2px);
+}
+
+/* Gorgeous Search Input */
 .searchbar-input {
-  flex: 1;
-  padding: 0.8rem 1rem;
-  border: none;
-  outline: none;
-  border-radius: 50px;
-  font-size: 1rem;
-  color: #333;
-  background: transparent;
+    flex: 1;
+    height: var(--search-height);
+    padding: var(--search-padding);
+    border: none;
+    outline: none;
+    background: transparent;
+    
+    /* Typography */
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--search-text);
+    
+    /* Smooth Transitions */
+    transition: all var(--search-transition);
 }
 
-/* Button */
+.searchbar-input::placeholder {
+    color: var(--search-placeholder);
+    font-weight: 400;
+    transition: all var(--search-transition);
+}
+
+.searchbar-input:focus::placeholder {
+    color: transparent;
+    transform: translateX(10px);
+}
+
+/* Stunning Search Button */
 .searchbar-button {
-  padding: 0.7rem 1.5rem;
-  margin-left: 0.5rem;
-  border: none;
-  border-radius: 50px;
-  background: #10365d;
-  color: #ffffff;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
+    height: calc(var(--search-height) - 8px);
+    padding: 0 2rem;
+    margin: 4px;
+    border: none;
+    border-radius: calc(var(--search-radius) - 4px);
+    background: var(--search-gradient);
+    color: var(--search-white);
+    
+    /* Typography */
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    
+    /* Interactive Effects */
+    cursor: pointer;
+    transition: all var(--search-bounce);
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--search-shadow-subtle);
 }
 
-/* Hover & Focus Effects */
+.searchbar-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left var(--search-elastic);
+}
+
+.searchbar-button:hover::before {
+    left: 100%;
+}
+
 .searchbar-button:hover {
-  background: #14508a;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    background: var(--search-hover);
+    box-shadow: var(--search-shadow-strong);
+    transform: scale(1.05);
 }
 
-.searchbar-input:focus {
-  background: #f0f4f8;
-  transition: background 0.3s ease;
+.searchbar-button:active {
+    transform: scale(0.98);
+}
+
+/* Beautiful Search Icon */
+.searchbar-button::after {
+    content: '🔍';
+    margin-left: 0.5rem;
+    font-size: 1.1rem;
+    animation: searchIconBounce 2s infinite;
+}
+
+@keyframes searchIconBounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+/* Magic Focus Effects */
+.searchbar-form:focus-within .searchbar-input {
+    color: var(--search-primary);
+    font-weight: 600;
+}
+
+.searchbar-form:focus-within .searchbar-button {
+    background: var(--search-success);
+    animation: buttonPulse 1s infinite;
+}
+
+@keyframes buttonPulse {
+    0%, 100% { box-shadow: var(--search-shadow-subtle); }
+    50% { box-shadow: var(--search-shadow-glow); }
+}
+
+/* Responsive Excellence */
+@media (max-width: 768px) {
+    :root {
+        --search-height: 55px;
+        --search-padding: 0 1.5rem;
+    }
+    
+    .searchbar-wrapper {
+        padding: 1.5rem 1rem;
+    }
+    
+    .searchbar-container {
+        max-width: 100%;
+    }
+    
+    .searchbar-input {
+        font-size: 1rem;
+    }
+    
+    .searchbar-button {
+        padding: 0 1.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --search-height: 50px;
+        --search-radius: 25px;
+        --search-padding: 0 1rem;
+    }
+    
+    .searchbar-wrapper {
+        padding: 1rem 0.5rem;
+    }
+    
+    .searchbar-form {
+        flex-direction: column;
+        height: auto;
+        border-radius: var(--search-radius);
+        gap: 0.5rem;
+        padding: 0.5rem;
+    }
+    
+    .searchbar-input {
+        height: var(--search-height);
+        width: 100%;
+        text-align: center;
+    }
+    
+    .searchbar-button {
+        width: 100%;
+        margin: 0;
+        height: 45px;
+    }
+}
+
+/* Premium Loading State */
+.searchbar-form.loading {
+    pointer-events: none;
+}
+
+.searchbar-form.loading .searchbar-button {
+    background: var(--search-text-light);
+    animation: loadingPulse 1.5s infinite;
+}
+
+.searchbar-form.loading .searchbar-button::after {
+    content: '⏳';
+    animation: loadingSpin 1s infinite linear;
+}
+
+@keyframes loadingPulse {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+@keyframes loadingSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Success State Animation */
+.searchbar-form.success {
+    animation: successBounce 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes successBounce {
+    0%, 100% { transform: translateY(-2px) scale(1); }
+    50% { transform: translateY(-8px) scale(1.05); }
+}
+
+.searchbar-form.success .searchbar-button {
+    background: var(--search-success);
+}
+
+.searchbar-form.success .searchbar-button::after {
+    content: '✅';
+    animation: none;
+}
+
+/* Accessibility Enhancements */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+.searchbar-input:focus,
+.searchbar-button:focus {
+    outline: 3px solid var(--search-primary);
+    outline-offset: 2px;
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --search-glass: rgba(26, 26, 26, 0.9);
+        --search-glass-hover: rgba(26, 26, 26, 0.95);
+        --search-white: #1a1a1a;
+        --search-light: #2a2a2a;
+        --search-text: #e2e8f0;
+        --search-text-light: #94a3b8;
+        --search-placeholder: #64748b;
+        --search-border: rgba(102, 126, 234, 0.3);
+    }
+}
+
+/* Print Styles */
+@media print {
+    .searchbar-wrapper {
+        display: none;
+    }
+}
+
+/* Special Hover Effects for Desktop */
+@media (hover: hover) and (pointer: fine) {
+    .searchbar-form:hover {
+        background: var(--search-glass-hover);
+        box-shadow: var(--search-shadow-medium);
+        transform: translateY(-1px);
+    }
+    
+    .searchbar-input:hover::placeholder {
+        color: var(--search-primary);
+    }
+    
+    .searchbar-button:hover {
+        animation: buttonHover 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+    
+    @keyframes buttonHover {
+        0%, 100% { transform: scale(1.05); }
+        50% { transform: scale(1.1) rotateZ(2deg); }
+    }
+}
+
+/* Auto-suggestion Dropdown (if you add it later) */
+.search-suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--search-white);
+    border-radius: 0 0 var(--search-radius) var(--search-radius);
+    box-shadow: var(--search-shadow-medium);
+    margin-top: 4px;
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 100;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all var(--search-transition);
+    pointer-events: none;
+}
+
+.search-suggestions.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+}
+
+.search-suggestion-item {
+    padding: 1rem 2rem;
+    border-bottom: 1px solid var(--search-border);
+    cursor: pointer;
+    transition: all var(--search-transition);
+}
+
+.search-suggestion-item:hover {
+    background: var(--search-light);
+    color: var(--search-primary);
 }

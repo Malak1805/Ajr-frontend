@@ -232,6 +232,9 @@ const PostDetail = () => {
     <div className="postdetail-container">
       <div className="postdetails">
         <h1>{post.title}</h1>
+        <div className="post-category">
+  <b>Category:</b> {post.category || "Uncategorized"}
+</div>
         <p>{post.description}</p>
         <div className="postdonations">
           <span>
