@@ -35,7 +35,7 @@ const [postsUpdated, setPostsUpdated] = useState(false)
     try {
       const token = localStorage.getItem('token')
       if (token) {
-        const res = await Client.get(`${BASE_URL}/auth/session`)
+        const res = await Client.get('/auth/session')
         setUser(res.data)
       } else {
         setUser(null)
