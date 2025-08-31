@@ -1,21 +1,17 @@
-/* ==========================================
-   MAGNIFICENT FUNDRAISING NAVBAR STYLES
-   Premium, Modern & Inspiring Navigation
-   File: navbar.css
-   ========================================== */
+
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
 
-/* Premium Navbar Variables */
+
 :root {
-    /* Fundraising Brand Colors */
+    
     --navbar-primary: #667eea;
     --navbar-secondary: #764ba2;
     --navbar-accent: #4facfe;
     --navbar-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #4facfe 100%);
     --navbar-hover: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
     
-    /* Elegant Neutrals */
+   
     --navbar-white: #ffffff;
     --navbar-glass: rgba(255, 255, 255, 0.95);
     --navbar-shadow: rgba(102, 126, 234, 0.2);
@@ -23,53 +19,54 @@
     --navbar-text: #334155;
     --navbar-text-light: #64748b;
     
-    /* Premium Effects */
+    
     --navbar-shadow-light: 0 4px 20px rgba(102, 126, 234, 0.15);
     --navbar-shadow-medium: 0 8px 30px rgba(102, 126, 234, 0.25);
     --navbar-shadow-strong: 0 12px 40px rgba(102, 126, 234, 0.35);
     --navbar-glow: 0 0 20px rgba(102, 126, 234, 0.4);
     
-    /* Smooth Transitions */
     --navbar-transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     --navbar-bounce: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     
-    /* Modern Spacing */
+   
     --navbar-padding: 1rem 2rem;
     --navbar-gap: 2rem;
     --navbar-height: 80px;
     --navbar-radius: 16px;
 }
 
-/* Magnificent Navbar Container */
+
 .navbar-container {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1000;
-    
-    /* Glassmorphism Design */
+    height: 1px;
+   
+    margin: 0 auto;     
+    width: 100%;        
     background: var(--navbar-glass);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     
-    /* Premium Borders & Shadows */
+    
     border-bottom: 1px solid var(--navbar-border);
     box-shadow: var(--navbar-shadow-light);
     
-    /* Layout */
+    
     display: flex;
     align-items: center;
     justify-content: center;
     padding: var(--navbar-padding);
     min-height: var(--navbar-height);
     
-    /* Smooth Animations */
+    
     transition: all var(--navbar-transition);
     animation: navbarSlideDown 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* Stunning Entry Animation */
+
 @keyframes navbarSlideDown {
     0% {
         opacity: 0;
@@ -83,27 +80,23 @@
     }
 }
 
-/* Enhanced Navbar on Scroll */
 .navbar-container.scrolled {
     background: var(--navbar-white);
     box-shadow: var(--navbar-shadow-medium);
     border-bottom-color: rgba(102, 126, 234, 0.1);
 }
 
-/* Beautiful Navigation Links */
 .nav-link {
-    /* Typography */
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
     font-size: 1rem;
     text-decoration: none;
     letter-spacing: 0.3px;
     
-    /* Colors */
     color: var(--navbar-text);
     transition: all var(--navbar-transition);
     
-    /* Layout */
+ 
     padding: 0.75rem 1.5rem;
     margin: 0 0.5rem;
     border-radius: var(--navbar-radius);
@@ -112,17 +105,15 @@
     align-items: center;
     gap: 0.5rem;
     
-    /* Premium Effects */
     overflow: hidden;
     background: transparent;
     border: 2px solid transparent;
     
-    /* Smooth Animations */
     transform: translateY(0);
     animation: linkFadeIn 0.6s ease-out backwards;
 }
 
-/* Staggered Link Animations */
+
 .nav-link:nth-child(1) { animation-delay: 0.1s; }
 .nav-link:nth-child(2) { animation-delay: 0.2s; }
 .nav-link:nth-child(3) { animation-delay: 0.3s; }
@@ -140,7 +131,7 @@
     }
 }
 
-/* Magical Hover Effects */
+
 .nav-link::before {
     content: '';
     position: absolute;
@@ -165,7 +156,7 @@
     border-color: var(--navbar-primary);
 }
 
-/* Shimmer Effect on Hover */
+
 .nav-link::after {
     content: '';
     position: absolute;
@@ -183,7 +174,7 @@
     left: 100%;
 }
 
-/* Active Link Styling */
+
 .nav-link.active {
     background: var(--navbar-gradient);
     color: var(--navbar-white);
@@ -196,7 +187,7 @@
     background: var(--navbar-hover);
 }
 
-/* Special Styling for Auth Links */
+
 .nav-link[href*="login"] {
     background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(79, 172, 254, 0.1));
     border-color: var(--navbar-primary);
@@ -228,7 +219,7 @@
     animation: none;
 }
 
-/* Account Link Special Styling */
+
 .nav-link[href*="account"] {
     background: linear-gradient(135deg, rgba(56, 239, 125, 0.1), rgba(46, 204, 113, 0.1));
     border-color: #38ef7d;
@@ -240,7 +231,7 @@
     background: linear-gradient(135deg, #38ef7d, #27ae60);
 }
 
-/* My Donations Special Styling */
+
 .nav-link[href*="donations"] {
     position: relative;
 }
@@ -254,7 +245,7 @@
     transform: translateY(-2px) scale(1.05);
 }
 
-/* Icon Integration */
+
 .nav-link[href="/"]::before {
     content: '🏠 ';
 }
@@ -279,7 +270,7 @@
     content: '✨ ';
 }
 
-/* Responsive Design Excellence */
+
 @media (max-width: 768px) {
     :root {
         --navbar-padding: 0.75rem 1rem;
@@ -321,7 +312,7 @@
         margin: 0.25rem 0;
     }
     
-    /* Mobile Menu Animation */
+  
     .nav-link {
         animation: mobileSlideIn 0.4s ease-out backwards;
     }
@@ -338,7 +329,7 @@
     }
 }
 
-/* Premium Accessibility */
+
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -347,7 +338,6 @@
     }
 }
 
-/* Focus States for Accessibility */
 .nav-link:focus {
     outline: 3px solid var(--navbar-primary);
     outline-offset: 2px;
@@ -355,7 +345,7 @@
     color: var(--navbar-white);
 }
 
-/* Print Styles */
+
 @media print {
     .navbar-container {
         position: static;
@@ -371,7 +361,7 @@
     }
 }
 
-/* Dark Mode Support */
+
 @media (prefers-color-scheme: dark) {
     :root {
         --navbar-glass: rgba(26, 26, 26, 0.95);
@@ -386,7 +376,7 @@
     }
 }
 
-/* Special Hover Effects for Desktop */
+
 @media (hover: hover) and (pointer: fine) {
     .nav-link:hover {
         animation: linkHover 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -407,12 +397,12 @@
     }
 }
 
-/* Body padding to account for fixed navbar */
+
 body {
     padding-top: calc(var(--navbar-height) + 1rem);
 }
 
-/* Logo/Brand Styling (if you want to add one) */
+
 .navbar-brand {
     font-family: 'Poppins', sans-serif;
     font-weight: 800;

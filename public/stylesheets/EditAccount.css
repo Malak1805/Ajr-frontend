@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+
+:root {
+  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --primary-color: #667eea;
+  --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --warm-coral: #ff6b6b;
+  --pure-white: #ffffff;
+  --soft-white: #fefefe;
+  --cloud-white: #fbfcfd;
+  --pearl-white: #f8fafc;
+  --border-light: #e2e8f0;
+  --text-primary: #1a202c;
+  --text-secondary: #4a5568;
+  --text-light: #718096;
+  --shadow-soft: 0 4px 6px rgba(0, 0, 0, 0.03);
+  --shadow-gentle: 0 8px 15px rgba(0, 0, 0, 0.04);
+  --shadow-dramatic: 0 25px 50px rgba(0, 0, 0, 0.12);
+  --shadow-colored: 0 10px 30px rgba(102, 126, 234, 0.15);
+  --shadow-glow: 0 0 20px rgba(102, 126, 234, 0.2);
+  --radius-xl: 20px;
+  --radius-3xl: 32px;
+  --space-sm: 0.75rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 2.5rem;
+  --transition-smooth: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-bounce: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+
+.fundraising-wrapper {
+  min-height: 100vh;
+  background: var(--pure-white);
+  padding: var(--space-4xl) var(--space-xl);
+  position: relative;
+  overflow: hidden;
+}
+
+
+.account-container {
+  background: var(--soft-white);
+  border-radius: var(--radius-3xl);
+  box-shadow: var(--shadow-dramatic);
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  overflow: hidden;
+  border: 1px solid var(--border-light);
+}
+
+
+.header-section {
+  background: linear-gradient(135deg, var(--cloud-white) 0%, var(--pearl-white) 100%);
+  padding: var(--space-4xl) var(--space-xl) var(--space-3xl);
+  border-bottom: 1px solid var(--border-light);
+  text-align: center;
+  position: relative;
+}
+
+.back-btn {
+  position: absolute;
+  top: var(--space-xl);
+  left: var(--space-xl);
+}
+
+.back-btn button {
+  background: var(--pure-white);
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-xl);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  transition: all var(--transition-smooth);
+}
+
+.back-btn button:hover {
+  background: var(--primary-color);
+  color: var(--pure-white);
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow-colored);
+}
+
+
+.title-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.fundraiser-badge {
+  width: 120px;
+  height: 120px;
+  background: var(--pure-white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--warm-coral);
+  font-size: 48px;
+  box-shadow: var(--shadow-gentle);
+  border: 4px solid var(--border-light);
+  animation: floatElements 6s infinite ease-in-out;
+}
+
+@keyframes floatElements {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.title-wrapper h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.platform-tagline {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  color: var(--text-light);
+  font-style: italic;
+}
+
+
+.form-container {
+  padding: var(--space-4xl) var(--space-xl);
+  background: var(--pure-white);
+}
+
+.input-row {
+  margin-bottom: var(--space-2xl);
+  animation: inputSlide 0.6s ease-out backwards;
+}
+
+@keyframes inputSlide {
+  0% { opacity: 0; transform: translateX(-20px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+.input-row label span {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  position: relative;
+  padding-left: 1rem;
+}
+
+.input-row span::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 16px;
+  background: var(--primary-gradient);
+  border-radius: 50%;
+  transition: all var(--transition-smooth);
+}
+
+.input-row:hover span::before {
+  width: 6px;
+  height: 20px;
+  background: var(--secondary-gradient);
+}
+
+.input-row input {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-xl);
+  background: var(--cloud-white);
+  font-size: 16px;
+  transition: all var(--transition-smooth);
+}
+
+.input-row input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  background: var(--pure-white);
+  box-shadow: var(--shadow-glow);
+}
+
+
+.action-wrapper {
+  text-align: center;
+  padding-top: var(--space-2xl);
+  border-top: 1px solid var(--border-light);
+}
+
+.edit-btn button {
+  font-family: 'Poppins', sans-serif;
+  background: var(--pure-white);
+  border: 3px solid var(--primary-color);
+  border-radius: 50px;
+  padding: 1rem 3rem;
+  color: var(--primary-color);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-bounce);
+}
+
+.edit-btn button:hover {
+  background: var(--primary-color);
+  color: var(--pure-white);
+  box-shadow: var(--shadow-colored);
+  transform: translateY(-4px) scale(1.05);
+}
+
+
+.delete-btn button {
+  border-color: var(--warm-coral);
+  color: var(--warm-coral);
+}
+
+.delete-btn button:hover {
+  background: var(--warm-coral);
+  color: var(--pure-white);
+  box-shadow: 0 0 20px rgba(255, 107, 107, 0.3);
+  transform: translateY(-2px) scale(1.05);
+}

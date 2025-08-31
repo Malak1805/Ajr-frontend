@@ -93,11 +93,11 @@ const LoginForm = () => {
         type="submit" 
         className={`login-submit ${isLoading ? 'loading' : ''}`}
       >
-        Log In
+        {/* Log In */}
       </button>
     </form>
     
-    {/* Optional: Add forgot password link */}
+    
     <div className="forgot-password">
       <a href="/forgot-password">Forgot your password?</a>
     </div>

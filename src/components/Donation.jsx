@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
-// import '../../public/stylesheets/Donations.css'
-
-
+import '../../public/stylesheets/Donations.css'
+import { BASE_URL } from '../../globals'
 
 const Donation = () => {
 
@@ -42,19 +41,42 @@ const Donation = () => {
 return(
 
   <>
- <div className="donations-container">
-      <h2>Donations for Post</h2>
+ <div className="donations-page">
+      <div className="particle-background"></div>
+
+      <h1>💸 Donations for Post</h1>
+
       {donations.length === 0 ? (
-        <p>No donations have been made for this post yet.</p>
+        <div className="empty-state">
+          <h3>No Donations Yet</h3>
+          <p>
+            This post hasn’t received any donations yet. Be the first to support
+            this cause and make a difference. 🌟
+          </p>
+        </div>
       ) : (
-        <ul className="donations-list">
-          {donations.map((donation) => (
-            <li key={donation._id} className="donation-item">
-              <p>Amount: ${donation.amount}</p>
-              <p>Donated by: {donation.user?.first_name} {donation.user?.last_name}</p>
-            </li>
+        <div className="donations-grid">
+          {donations.map((donation, index) => (
+            <div key={donation._id} className="donation-card">
+              <h4 className="donation-title">Donation #{index + 1}</h4>
+              <div className="underline"></div>
+
+              <p className="donation-description">
+                Amount: <strong>${donation.amount}</strong>
+              </p>
+
+              <div className="donation-meta">
+                <span className="donation-goal">
+                  Donated by{" "}
+                  <span>
+                    {donation.user?.first_name} {donation.user?.last_name}
+                  </span>
+                </span>
+                <span className="donation-author">🙏 Supporter</span>
+              </div>
+            </div>
           ))}
-        </ul>
+        </div>
       )}
     </div>
   </>

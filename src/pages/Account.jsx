@@ -30,6 +30,7 @@ const navigate = useNavigate()
           </div>
           <div className="title-wrapper">
             <div className="fundraiser-badge">
+              <div className="fundraiser-badge">👤</div>
               <i className="fas fa-heart"></i>
             </div>
             <h2>Account Info</h2>

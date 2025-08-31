@@ -70,6 +70,7 @@ body {
 
 .create-post-button {
   display: inline-block;
+  margin-top: 1rem;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: #ffffff;
   padding: 0.8rem 1.8rem;

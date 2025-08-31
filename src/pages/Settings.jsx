@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { useContext } from 'react'
 import { UserContext } from '../Context/UserContext'
-// import '../styleSheets/Settings.css'
+import '../../public/stylesheets/Settings.css'
 
 const Settings = () => {
   const navigate = useNavigate()

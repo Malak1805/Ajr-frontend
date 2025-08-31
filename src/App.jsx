@@ -17,6 +17,7 @@ import About from './pages/About'
 import { useState } from 'react'
 import DonationList from './components/DonationList'
 import NotAuthorized from './pages/NotAuthorized'
+import Footer from './components/Footer'
 import Client from '../services/Api'
 import { useContext } from 'react'
 import { BASE_URL } from '../globals'
@@ -80,6 +81,7 @@ const [postsUpdated, setPostsUpdated] = useState(false)
           <Route path="/auth/login" element={<LoginForm />} />
         </Routes>
       </main>
+      <Footer />
     </>
   )
 }
