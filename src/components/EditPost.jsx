@@ -10,7 +10,9 @@ const EditPost = () => {
   const [description, setDescription] = useState('')
   const [goalAmount, setGoalAmount] = useState('')
   const [loading, setLoading] = useState(true)
+  const [image, setImage] = useState(null)
   const [error, setError] = useState(null)
+
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -39,31 +41,32 @@ const EditPost = () => {
         setError(err.response?.data?.msg || 'Failed to fetch post details for editing.')
         setLoading(false)
       }
-    };
+    }
     fetchPost()
   }, [id])
 
   const handleUpdatePost = async (e) => {
-    e.preventDefault();
-    try {
-      const updatedPost = {
-        title,
-        description,
-        goal_amount: Number(goalAmount)
-      };
+e.preventDefault();
+  try {
+    const formData = new FormData()
+    formData.append("title", title)
+    formData.append("description", description)
+    formData.append("goal_amount", Number(goalAmount))
+    if (image) formData.append("image", image)
 
-      const token = localStorage.getItem('token');
-      await axios.put(`http://localhost:3000/posts/${id}`, updatedPost, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      });
-      navigate(`/posts/${id}`)
-    } catch (err) {
-      console.error('Failed to update post:', err.response?.data || err.message)
-      setError(err.response?.data?.msg || 'An unexpected error occurred while updating the post.')
-    }
-  };
+    const token = localStorage.getItem("token")
+    await axios.put(`http://localhost:3000/posts/${id}`, formData, {
+      headers: {
+        "Authorization": `Bearer ${token}`,
+        "Content-Type": "multipart/form-data"
+      }
+    })
+    navigate(`/posts/${id}`)
+  } catch (err) {
+    console.error("Failed to update post:", err.response?.data || err.message)
+    setError(err.response?.data?.msg || "An unexpected error occurred while updating the post.")
+  }
+}
   
   if (loading) return <div>Loading post...</div>
   if (error) return <div>{error}</div>;
@@ -102,6 +105,14 @@ const EditPost = () => {
             min="0"
           />
         </div>
+        <div className="form-group">
+  <label htmlFor="image">Upload Image</label>
+  <input
+    type="file"
+    id="image"
+    accept="image/*"
+    onChange={(e) => setImage(e.target.files[0])}
+  /></div>
         <button type="submit">Update Post</button>
       </form>
     </div>
