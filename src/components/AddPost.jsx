@@ -12,48 +12,38 @@ const AddPost = ({ onPostChange }) => {
   const [goalAmount, setGoalAmount] = useState('')
   const [category, setCategory] = useState('')
   const [error, setError] = useState(null)
+  const [image, setImage] = useState(null)
   
-   const handleAddPost = async (e) => {
-    e.preventDefault();
-    try {
-      const newPost = {
-        title: title,
-        description: description,
-        goal_amount: Number(goalAmount),
-        category
-      }
+const handleAddPost = async (e) => {
+  e.preventDefault();
+  try {
+    const formData = new FormData()
+    formData.append("title", title)
+    formData.append("description", description)
+    formData.append("goal_amount", Number(goalAmount))
+    formData.append("category", category)
+    if (image) formData.append("image", image)
 
-
-      const token = localStorage.getItem('token');
-      if (!token) {
-        setError('You must be logged in to create a post.');
-        return;
-      }
-
-
-      const response = await axios.post(
-        'http://localhost:3000/posts', 
-        newPost,
-        {
-          headers: {
-            'Authorization': `Bearer ${token}`
-          }
-        }
-      )
-
-
-    
-      onPostChange()
-
-      // setPosts((prevPosts) => [createdPost, ...prevPosts]);
-
-
-      navigate('/')
-    } catch (err) {
-      console.error('Failed to add post:', err.response ? err.response.data : err.message)
-      setError(err.response ? err.response.data.msg : 'An unexpected error occurred.')
+    const token = localStorage.getItem("token")
+    if (!token) {
+      setError("You must be logged in to create a post.")
+      return
     }
-  };
+
+    await axios.post("http://localhost:3000/posts", formData, {
+      headers: {
+        "Authorization": `Bearer ${token}`,
+      }
+    })
+
+    onPostChange()
+    navigate("/")
+  } catch (err) {
+    console.error("Failed to add post:", err.response ? err.response.data : err.message)
+    setError(err.response ? err.response.data.msg : "An unexpected error occurred.")
+  }
+}
+
 
   return (
     <>
@@ -109,6 +99,16 @@ const AddPost = ({ onPostChange }) => {
               <option value="Religious & Charity">Religious & Charity</option>
             </select>
           </div>
+
+          <div className="form-group">
+  <label htmlFor="image">Upload Image</label>
+  <input 
+    type="file" 
+    id="image" 
+    accept="image/*" 
+    onChange={(e) => setImage(e.target.files[0])} 
+  />
+</div>
 
       <div className="form-actions">
         <button type="submit">✨ Create Post</button>

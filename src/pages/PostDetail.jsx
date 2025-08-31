@@ -232,6 +232,15 @@ const PostDetail = () => {
     <div className="postdetail-container">
       <div className="postdetails">
         <h1>{post.title}</h1>
+        {post.image && (
+  <div className="post-image">
+    <img 
+      src={`http://localhost:3000${post.image}`} 
+      alt={post.title} 
+      style={{ maxWidth: "100%", borderRadius: "8px", margin: "1rem 0" }}
+    />
+  </div>
+)}
         <div className="post-category">
   <b>Category:</b> {post.category || "Uncategorized"}
 </div>
