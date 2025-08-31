@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import '../../public/stylesheets/RegisterForm.css'
+import { BASE_URL } from '../../globals'
 
 export const RegisterUser = async (data, user) => {
   try {
