@@ -5,7 +5,7 @@ import '../../public/stylesheets/LoginForm.css'
 
 export const LoginUser = async (data) => {
   try {
-    const res = await axios.post(`http://localhost:3000/auth/login`, data)
+    const res = await axios.post(`${BASE_URL}/auth/login`, data)
 
     console.log('Login successful:', res.data)
     return res.data

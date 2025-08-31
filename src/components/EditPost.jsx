@@ -24,7 +24,7 @@ const EditPost = () => {
           return
         }
 
-        const response = await axios.get(`http://localhost:3000/posts/${id}`, {
+        const response = await axios.get(`${BASE_URL}/posts/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -55,7 +55,7 @@ e.preventDefault();
     if (image) formData.append("image", image)
 
     const token = localStorage.getItem("token")
-    await axios.put(`http://localhost:3000/posts/${id}`, formData, {
+    await axios.put(`${BASE_URL}/posts/${id}`, formData, {
       headers: {
         "Authorization": `Bearer ${token}`,
         "Content-Type": "multipart/form-data"

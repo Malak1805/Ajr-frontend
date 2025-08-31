@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import '../../public/stylesheets/PostDetail.css'
+import { BASE_URL } from '../../globals'
 
 const PostDetail = () => {
   const { id } = useParams()
@@ -23,16 +24,17 @@ const PostDetail = () => {
     useState(false)
   const [currentUserId, setCurrentUserId] = useState(null)
 
-  const BASE_API_URL = 'http://localhost:3000'
-
   const handleDeletePost = async () => {
+    if (post.userId._id !== currentUserId) {
+      navigate('/not-authorized')
+      return
+    }
+
     if (window.confirm('Are you sure you want to delete this post?')) {
       try {
         const token = localStorage.getItem('token')
-        await axios.delete(`http://localhost:3000/posts/${id}`, {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
+        await axios.delete(`${BASE_URL}/posts/${id}`, {
+          headers: { Authorization: `Bearer ${token}` }
         })
         navigate('/')
       } catch (err) {
@@ -40,7 +42,7 @@ const PostDetail = () => {
           'Failed to delete post:',
           err.response?.data || err.message
         )
-        alert('Failed to delete post. You may not have permission.')
+        navigate('/not-authorized')
       }
     }
   }
@@ -49,7 +51,7 @@ const PostDetail = () => {
     try {
       setLoading(true)
 
-      const response = await axios.get(`http://localhost:3000/posts/${id}`)
+      const response = await axios.get(`${BASE_URL}/posts/${id}`)
       setPost(response.data.post)
       setLoading(false)
     } catch (err) {
@@ -65,7 +67,7 @@ const PostDetail = () => {
     try {
       const token = localStorage.getItem('token')
 
-      const response = await axios.get(`http://localhost:3000/comments/${id}`, {
+      const response = await axios.get(`${BASE_URL}/comments/${id}`, {
         headers: {
           Authorization: token ? `Bearer ${token}` : ''
         }
@@ -115,7 +117,7 @@ const PostDetail = () => {
       }
 
       const response = await axios.post(
-        `http://localhost:3000/donations/${post._id}`,
+        `${BASE_URL}/donations/${post._id}`,
         { amount: Number(donationAmount), message: donationMessage },
         {
           headers: {
@@ -161,7 +163,7 @@ const PostDetail = () => {
         return
       }
       const response = await axios.post(
-        `${BASE_API_URL}/comments/${id}`,
+        `${BASE_URL}/comments/${id}`,
         { message: newCommentMessage },
         {
           headers: {
@@ -194,7 +196,7 @@ const PostDetail = () => {
         return
       }
 
-      await axios.delete(`${BASE_API_URL}/comments/${commentId}`, {
+      await axios.delete(`${BASE_URL}/comments/${commentId}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -233,17 +235,21 @@ const PostDetail = () => {
       <div className="postdetails">
         <h1>{post.title}</h1>
         {post.image && (
-  <div className="post-image">
-    <img 
-      src={`http://localhost:3000${post.image}`} 
-      alt={post.title} 
-      style={{ maxWidth: "100%", borderRadius: "8px", margin: "1rem 0" }}
-    />
-  </div>
-)}
+          <div className="post-image">
+            <img
+              src={`${BASE_URL}${post.image}`}
+              alt={post.title}
+              style={{
+                maxWidth: '100%',
+                borderRadius: '8px',
+                margin: '1rem 0'
+              }}
+            />
+          </div>
+        )}
         <div className="post-category">
-  <b>Category:</b> {post.category || "Uncategorized"}
-</div>
+          <b>Category:</b> {post.category || 'Uncategorized'}
+        </div>
         <p>{post.description}</p>
         <div className="postdonations">
           <span>
@@ -264,14 +270,12 @@ const PostDetail = () => {
         </div>
         <p className="progress-text">
           {Math.min(100, progress).toFixed(2)}% of goal reached
-        </p>
-        {' '}
+        </p>{' '}
         <div className="view-donations-link-container">
           {' '}
           <Link to={`/posts/${id}/donations`} className="view-donations-link">
-          <button>View All Donations</button>{' '}
-          </Link>
-          {' '}
+            <button>View All Donations</button>{' '}
+          </Link>{' '}
         </div>
         <div className="post-author">
           {post.userId ? (
@@ -281,14 +285,16 @@ const PostDetail = () => {
           ) : (
             <span>By: Unknown User</span>
           )}
-          <div className="post-actions">
-            <Link to={`/edit-post/${post._id}`} className="edit-post-btn">
-              Edit Post
-            </Link>
-            <button onClick={handleDeletePost} className="delete-post-btn">
-              Delete Post
-            </button>
-          </div>
+          {post.userId && post.userId._id === currentUserId && (
+            <div className="post-actions">
+              <Link to={`/edit-post/${post._id}`} className="edit-post-btn">
+                Edit Post
+              </Link>
+              <button onClick={handleDeletePost} className="delete-post-btn">
+                Delete Post
+              </button>
+            </div>
+          )}
         </div>
         {/* Donation Form */}
         <div className="donation-section">

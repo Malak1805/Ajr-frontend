@@ -30,7 +30,7 @@ const handleAddPost = async (e) => {
       return
     }
 
-    await axios.post("http://localhost:3000/posts", formData, {
+    await axios.post(`${BASE_URL}/posts`, formData, {
       headers: {
         "Authorization": `Bearer ${token}`,
       }

@@ -18,7 +18,7 @@ const Donation = () => {
       try {
         setLoading(true)
 
-        const response = await axios.get(`http://localhost:3000/donations/${postId}`)
+        const response = await axios.get(`${BASE_URL}/donations/${postId}`)
         
  
         setDonations(response.data.donations)

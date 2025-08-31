@@ -16,6 +16,7 @@ import UpdatePassword from './pages/UpdatePassword'
 import About from './pages/About'
 import { useState } from 'react'
 import DonationList from './components/DonationList'
+import NotAuthorized from './pages/NotAuthorized'
 import Client from '../services/Api'
 import { useContext } from 'react'
 import { BASE_URL } from '../globals'
@@ -66,6 +67,7 @@ const [postsUpdated, setPostsUpdated] = useState(false)
           <Route path="/" element={<Home postsUpdated={postsUpdated} />}/>
           <Route path="/posts/new" element={<AddPost onPostChange={onPostChange} />} />
           <Route path="/edit-post/:id" element={<EditPost onPostChange={onPostChange}/>} />
+          <Route path="/not-authorized" element={<NotAuthorized />} />
           <Route path="/posts/:id" element={<PostDetail onPostChange={onPostChange} />} />
           <Route path="/my-donations" element={<DonationList user={user}/>} />
           <Route path="/posts/:postId/donations" element={<Donation />} />

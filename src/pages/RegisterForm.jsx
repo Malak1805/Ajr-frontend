@@ -6,7 +6,7 @@ import '../../public/stylesheets/RegisterForm.css'
 export const RegisterUser = async (data, user) => {
   try {
     const res = await axios.post(
-      `http://localhost:3000/auth/register?user=${user}`,
+      `${BASE_URL}/auth/register?user=${user}`,
       data
     )
     return res.data
