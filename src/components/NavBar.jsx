@@ -7,7 +7,9 @@ const NavBar = () => {
    const { user } = useContext(UserContext) 
 return(
   <>
+  
   <nav className="navbar-container">
+    <img src="..\img\AjrWebsiteLogo.webp" alt="" />
 <Link to='/' className="nav-link">Home</Link>
 <Link to='/about' className="nav-link">About Us</Link>
 <Link to='/my-donations' className="nav-link">My Donations</Link>
@@ -15,7 +17,6 @@ return(
         
           <Link to="/account" className="nav-link">Account</Link>
         ) : (
-         
           <>
             <Link to='/auth/login' className="nav-link">Login</Link>
             <Link to='/auth/register' className="nav-link">Register</Link>

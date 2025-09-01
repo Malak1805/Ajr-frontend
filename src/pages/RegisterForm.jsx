@@ -27,7 +27,8 @@ const RegisterForm = () => {
     password: '',
     confirm_password: '',
     address: '',
-    phone_number: ''
+    phone_number: '',
+    country: ''
   }
 
   const [formValues, setFormValues] = useState(initialState)
@@ -137,6 +138,15 @@ const RegisterForm = () => {
   placeholder="Phone Number (Optional)"
   onChange={handleChange}
   value={formValues.phoneNumber}
+/>
+
+<label htmlFor="country">Country</label>
+<input
+  type="text"
+  name="country"
+  placeholder="Country"
+  onChange={handleChange}
+  value={formValues.country}
 />
 
           <p>Passwords must match and be at least 8 characters long.</p>
