@@ -26,7 +26,7 @@ const DonationList = ({ user }) => {
                         Authorization: `Bearer ${token}`
                     }
                 })
-                // FIX: Correctly access the 'donations' property from the response data
+
                 setDonatedPosts(response.data.donations)
             } catch (err) {
                 console.error("Error fetching user's donated posts:", err)
@@ -60,12 +60,11 @@ const DonationList = ({ user }) => {
     </div>
   ) : (
     <div className="donations-grid">
-      {donatedPosts.map((donation) => (
+      {donatedPosts.filter(donation => donation.post).map((donation) => (
         <div key={donation.post?._id} className="donation-card">
           <Link to={`/posts/${donation.post?._id}`} className="donation-link">
             <h2 className="donation-title">{donation.post?.title}</h2>
             <div className="underline"></div>
-            {/* FIX: Add fallback for description in case it is undefined */}
             <p className="donation-description">
               {donation.post?.description?.substring(0, 100) || ''}...
             </p>

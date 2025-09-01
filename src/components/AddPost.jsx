@@ -1,8 +1,8 @@
-import Posts from '../pages/Posts'
+
 import { useState } from 'react'
-import Home from '../pages/Home'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { BASE_URL } from '../../globals'
 import '../../public/stylesheets/AddPost.css'
 
 const AddPost = ({ onPostChange }) => {
