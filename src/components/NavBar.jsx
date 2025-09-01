@@ -9,7 +9,7 @@ return(
   <>
   
   <nav className="navbar-container">
-    <img src="..\img\AjrWebsiteLogo.webp" alt="" />
+    <img className="logo" src="..\img\AjrWebsiteLogo.webp" alt="" />
 <Link to='/' className="nav-link">Home</Link>
 <Link to='/about' className="nav-link">About Us</Link>
 <Link to='/my-donations' className="nav-link">My Donations</Link>
