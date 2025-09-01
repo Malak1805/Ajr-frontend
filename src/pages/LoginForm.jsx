@@ -29,6 +29,7 @@ const LoginForm = () => {
   const [formValues, setFormValues] = useState(initialState)
 
   const [message, setMessage] = useState('')
+   const [messageType, setMessageType] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
   const handleChange = (e) => {
@@ -39,6 +40,7 @@ const LoginForm = () => {
     e.preventDefault()
     setIsLoading(true)
     setMessage('')
+    setMessageType('')
     try {
       const response = await LoginUser(formValues)
 
@@ -48,11 +50,13 @@ const LoginForm = () => {
         navigate('/')
       } else {
         setMessage('Login failed. Please check your credentials.')
+         setMessageType('error')
       }
     } catch (error) {
       const errorMessage =
         error.response?.data?.msg || 'An unexpected error occurred.'
       setMessage(errorMessage)
+      setMessageType('error')
       console.error('Login failed:', error)
     } finally {
       setIsLoading(false)
