@@ -1,0 +1,18 @@
+.update-post-btn  {
+  font-family: 'Poppins', sans-serif;
+  background: var(--pure-white);
+  border: 3px solid var(--primary-color);
+  border-radius: 50px;
+  padding: 1rem 3rem;
+  color: var(--primary-color);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-bounce);
+}
+
+.update-post-btn :hover {
+  background: var(--primary-color);
+  color: var(--pure-white);
+  box-shadow: var(--shadow-colored);
+  transform: translateY(-4px) scale(1.05);
+}

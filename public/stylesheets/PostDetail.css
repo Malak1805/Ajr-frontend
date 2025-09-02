@@ -575,7 +575,7 @@
 }
 
 .alert-success::after {
-    content: '✅ ';
+
     position: absolute;
     left: var(--space-lg);
     top: 50%;
@@ -969,3 +969,43 @@
     cursor: not-allowed;
     transform: none;
 }
+
+.delete-post-btn{
+
+    top: var(--space-sm);
+    right: var(--space-sm);
+    background: #fed7d7;
+    color: #c53030;
+    border: none;
+    border-radius: var(--radius-soft);
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all var(--motion-velvet);
+}
+
+.delete-post-btn:hover {
+    background: #f56565;
+    color: var(--pure-white);
+    transform: translateY(-2px);
+}
+
+.edit-post-btn{
+    top: var(--space-sm);
+    right: var(--space-sm);
+    background: #b9e6ba;
+    color: #24c657;
+    border: none;
+    border-radius: var(--radius-soft);
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all var(--motion-velvet);
+}
+
+.edit-post-btn:hover {
+  background: #88eb90;
+    color: var(--pure-white);
+    transform: translateY(-2px);
+}
+

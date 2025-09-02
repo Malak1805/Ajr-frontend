@@ -394,7 +394,7 @@ const PostDetail = () => {
               )}
               {commentSubmissionSuccess && (
                 <div className="alert alert-success" role="alert">
-                  <p>Comment added successfully! 👍</p>
+                  <p>Comment added successfully! ✅</p>
                 </div>
               )}
               <form onSubmit={handleCommentSubmit} className="comment-form">

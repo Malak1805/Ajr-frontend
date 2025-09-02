@@ -2,6 +2,7 @@ import { BASE_URL } from '../../globals'
 import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import '../../public/stylesheets/EditPost.css'
 
 
 const EditPost = () => {
@@ -113,7 +114,7 @@ e.preventDefault();
     accept="image/*"
     onChange={(e) => setImage(e.target.files[0])}
   /></div>
-        <button type="submit">Update Post</button>
+        <button type="submit" className='update-post-btn'>Update Post</button>
       </form>
     </div>
   )
