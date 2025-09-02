@@ -4,17 +4,11 @@ import '../../public/stylesheets/Search.css'
 
 const Search = ({ onSearch }) => {
 
- const [searchTerm, setSearchTerm] = useState('')
-
   const handleChange = (e) => {
-    setSearchTerm(e.target.value)
-  }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    if (onSearch) {
-      onSearch(searchTerm)
-    }
+    const term = e.target.value
+
+    if (onSearch) onSearch(term) // sends term 
   }
 
 return(
@@ -22,12 +16,11 @@ return(
   <>
 <div className="searchbar-wrapper">
   <div className="searchbar-container">
-    <form onSubmit={handleSubmit} className="searchbar-form">
+    
       <input
         type="text"
         name="searchTerm"
         placeholder="Search posts..."
-        value={searchTerm}
         onChange={handleChange}
         className="searchbar-input"
         autoComplete="off"
@@ -35,7 +28,7 @@ return(
       <button type="submit" className="searchbar-button">
         Search
       </button>
-    </form>
+
   </div>
 </div>
   </>

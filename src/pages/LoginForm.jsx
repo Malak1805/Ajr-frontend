@@ -44,8 +44,8 @@ const LoginForm = () => {
     try {
       const response = await LoginUser(formValues)
 
-      if (response && response.token) {
-        localStorage.setItem('token', response.token)
+      if (response && response.token) { //checks weather response exist and if it has a token
+        localStorage.setItem('token', response.token) //stores
 
         navigate('/')
       } else {
@@ -58,9 +58,8 @@ const LoginForm = () => {
       setMessage(errorMessage)
       setMessageType('error')
       console.error('Login failed:', error)
-    } finally {
+    } 
       setIsLoading(false)
-  }
   }
   return (
 <div className="login-container">

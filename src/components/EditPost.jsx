@@ -52,14 +52,13 @@ e.preventDefault();
     const formData = new FormData()
     formData.append("title", title)
     formData.append("description", description)
-    formData.append("goal_amount", Number(goalAmount))
-    if (image) formData.append("image", image)
+    formData.append("goal_amount", goalAmount)      
+    if (image) formData.append("image", image) //append is needed to send files or images
 
     const token = localStorage.getItem("token")
     await axios.put(`${BASE_URL}/posts/${id}`, formData, {
       headers: {
-        "Authorization": `Bearer ${token}`,
-        "Content-Type": "multipart/form-data"
+        "Authorization": `Bearer ${token}`
       }
     })
     navigate(`/posts/${id}`)

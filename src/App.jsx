@@ -45,9 +45,8 @@ const [postsUpdated, setPostsUpdated] = useState(false)
       console.error(err)
       localStorage.clear()
       setUser(null)
-    } finally {
+    } 
       setLoading(false)
-    }
   };
 
   useEffect(() => {
@@ -56,7 +55,7 @@ const [postsUpdated, setPostsUpdated] = useState(false)
 
   if (loading) {
     return <div>Loading...</div>
-  }
+  };
 
 
   return (

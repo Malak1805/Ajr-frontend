@@ -27,8 +27,7 @@ const RegisterForm = () => {
     password: '',
     confirm_password: '',
     address: '',
-    phone_number: '',
-    country: ''
+    phone_number: ''
   }
 
   const [formValues, setFormValues] = useState(initialState)
@@ -54,15 +53,16 @@ const RegisterForm = () => {
     }
   }
 
-  const isPasswordValid =
-    formValues.password.length >= 8 &&
-    formValues.password === formValues.confirm_password
-  const isFormFilled =
-    formValues.first_name.length > 0 &&
-    formValues.last_name.length > 0 &&
-    formValues.email.length > 0 &&
-    formValues.address.length > 0 &&
-    isPasswordValid
+const passwordIsValid =
+  formValues.password.length >= 8 &&
+  formValues.password === formValues.confirm_password
+
+const formIsFilled =
+  formValues.first_name !== '' &&
+  formValues.last_name !== '' &&
+  formValues.email !== '' &&
+  formValues.address !== '' &&
+  passwordIsValid
 
   return (
     <div className="Register-Container">
@@ -137,17 +137,10 @@ const RegisterForm = () => {
   name="phone_number"
   placeholder="Phone Number (Optional)"
   onChange={handleChange}
-  value={formValues.phoneNumber}
+  value={formValues.phone_number}
 />
 
-<label htmlFor="country">Country</label>
-<input
-  type="text"
-  name="country"
-  placeholder="Country"
-  onChange={handleChange}
-  value={formValues.country}
-/>
+
 
           <p>Passwords must match and be at least 8 characters long.</p>
           {errorMessage && <p className="error-message">{errorMessage}</p>}
@@ -165,7 +158,7 @@ const RegisterForm = () => {
 
           <button
             className={`register-submit ${isLoading ? 'loading' : ''}`}
-            disabled={!isFormFilled || isLoading}
+            disabled={!formIsFilled || isLoading}
             type="submit"
           >
             {isLoading ? 'Registering...' : 'Create Your Account'}

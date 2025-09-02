@@ -45,9 +45,9 @@ if (posts.length === 0) {
             </span>
             <span className="post-author">
               {post.userId ? (
-                `By: ${post.userId.first_name} ${post.userId.last_name}`
+                `By: ${post.userId.first_name} ${post.userId.last_name}`//conditional rendering if the post has a userID it will display it
               ) : (
-                `By: Unknown User`
+                `By: Unknown User` //if not display this
               )}
             </span>
           </div>

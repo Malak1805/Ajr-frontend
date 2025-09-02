@@ -6,7 +6,7 @@ import { BASE_URL } from '../../globals'
 
 const Donation = () => {
 
-  const { postId } = useParams()
+  const { postId } = useParams() //getting the userID from the url using useparams
   const [donations, setDonations] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -24,16 +24,15 @@ const Donation = () => {
         setError(null);
       } catch (err) {
         console.error('Error fetching donations:', err)
-        setError('Failed to load donations.')
-      } finally {
+        setError('Failed to Load donations.')
+      } 
         setLoading(false)
-      }
     }
 
     if (postId) {
       fetchDonations()
     }
-  }, [postId])
+  }, [postId]);
 
   if (loading) return <div className="loading-message">Loading donations...</div>
   if (error) return <div className="error-message">{error}</div>
@@ -58,7 +57,8 @@ return(
         <div className="donations-grid">
           {donations.map((donation, index) => (
             <div key={donation._id} className="donation-card">
-              <h4 className="donation-title">Donation #{index + 1}</h4>
+              <h4 className="donation-title">Donation #{index + 1}</h4> 
+            {/* index+1  showing the first donation */}
               <div className="underline"></div>
 
               <p className="donation-description">

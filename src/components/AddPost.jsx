@@ -15,34 +15,46 @@ const AddPost = ({ onPostChange }) => {
   const [image, setImage] = useState(null)
   
 const handleAddPost = async (e) => {
-  e.preventDefault();
-  try {
-    const formData = new FormData()
-    formData.append("title", title)
-    formData.append("description", description)
-    formData.append("goal_amount", Number(goalAmount))
-    formData.append("category", category)
-    if (image) formData.append("image", image)
+  e.preventDefault()
+  setError(null)
 
-    const token = localStorage.getItem("token")
-    if (!token) {
-      setError("You must be logged in to create a post.")
-      return
+  if (!title || !description || !goalAmount || !category) {
+    setError("Please fill in all required fields.")
+    return
+  }
+
+  const token = localStorage.getItem("token")
+  if (!token) {
+    setError("You must be logged in to create a post.")
+    return
+  }
+
+  try {
+    // created a formData to send text and image together, using append allowing sending images and files
+    const data = new FormData()
+    data.append("title", title)
+    data.append("description", description)
+    data.append("goal_amount", goalAmount)
+    data.append("category", category)
+
+    if (image) {
+      data.append("image", image)
     }
 
-    await axios.post(`${BASE_URL}/posts`, formData, {
+    await axios.post(`${BASE_URL}/posts`, data, {
       headers: {
-        "Authorization": `Bearer ${token}`,
-      }
+        Authorization: `Bearer ${token}`,
+      },
     })
 
     onPostChange()
     navigate("/")
   } catch (err) {
     console.error("Failed to add post:", err.response ? err.response.data : err.message)
-    setError(err.response ? err.response.data.msg : "An unexpected error occurred.")
+    setError(err.response?.data?.msg || "Something went wrong.")
   }
 }
+
 
 
   return (
@@ -104,7 +116,6 @@ const handleAddPost = async (e) => {
   <label htmlFor="image">Upload Image</label>
   <input 
     type="file" 
-    id="image" 
     accept="image/*" 
     onChange={(e) => setImage(e.target.files[0])} 
   />

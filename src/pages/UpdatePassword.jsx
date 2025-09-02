@@ -182,7 +182,6 @@ const UpdatePassword = () => {
             <li><i className="fas fa-check"></i> Use at least 8 characters</li>
             <li><i className="fas fa-check"></i> Include uppercase and lowercase letters</li>
             <li><i className="fas fa-check"></i> Add numbers and special characters</li>
-            <li><i className="fas fa-check"></i> Avoid common words or phrases</li>
           </ul>
         </div>
       </div>

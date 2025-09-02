@@ -51,7 +51,7 @@ const PostDetail = () => {
     try {
       setLoading(true)
 
-      const response = await axios.get(`${BASE_URL}/posts/${id}`)
+      const response = await axios.get(`${BASE_URL}/posts/${id}`)//fetch the post from its Id
       setPost(response.data.post)
       setLoading(false)
     } catch (err) {
@@ -64,6 +64,7 @@ const PostDetail = () => {
   const fetchComments = async () => {
     setLoadingComments(true)
     setCommentError(null)
+
     try {
       const token = localStorage.getItem('token')
 
@@ -76,21 +77,20 @@ const PostDetail = () => {
     } catch (err) {
       console.error('Error fetching comments:', err)
       setCommentError(err.response?.data?.msg || 'Failed to load comments.')
-    } finally {
-      setLoadingComments(false)
-    }
+    } 
+      setLoadingComments(false) 
   }
 
   useEffect(() => {
     fetchPostDetails()
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem('token') //reads the stored token
     if (token) {
       try {
-        const payload = JSON.parse(atob(token.split('.')[1]))
+        const payload = JSON.parse(atob(token.split('.')[1])) //seperats and gets the payload middlepart
         setCurrentUserId(payload.id)
       } catch (e) {
         console.error('Error decoding token:', e)
-        setCurrentUserId(null)
+        setCurrentUserId(null)// reset the user Id
       }
     }
 
@@ -104,7 +104,7 @@ const PostDetail = () => {
     setDonationError(null)
     setDonationSuccess(false)
 
-    if (!donationAmount || Number(donationAmount) <= 0) {
+    if (!donationAmount || donationAmount <= 0) { //make sure donation amount is greater than zero
       setDonationError('Please enter a valid donation amount greater than 0.')
       return
     }
@@ -112,7 +112,7 @@ const PostDetail = () => {
     try {
       const token = localStorage.getItem('token')
       if (!token) {
-        setDonationError('You must be logged in to make a donation.')
+        setDonationError('You must be logged in to make a donation.') //user cannont make a donation without logging in
         return
       }
 
@@ -149,11 +149,11 @@ const PostDetail = () => {
     setCommentSubmissionError(null)
     setCommentSubmissionSuccess(false)
 
-    if (!newCommentMessage.trim()) {
-      setCommentSubmissionError('Comment cannot be empty.')
-      setSubmittingComment(false)
-      return
-    }
+  if (newCommentMessage === "") {
+  setCommentSubmissionError("Comment cannot be empty.") //if the comment empty it will not be submitted
+  setSubmittingComment(false)
+  return
+}
 
     try {
       const token = localStorage.getItem('token')
@@ -179,14 +179,12 @@ const PostDetail = () => {
         'Comment submission error:',
         err.response ? err.response.data : err.message
       )
-      setCommentSubmissionError(
-        err.response?.data?.msg ||
-          'An unexpected error occurred while adding comment.'
-      )
-    } finally {
-      setSubmittingComment(false)
-    }
+  setCommentSubmissionError(
+    err.response?.data?.msg || "Something went wrong while adding comment."
+  )
+  setSubmittingComment(false)
   }
+}
 
   const handleDeleteComment = async (commentId) => {
     try {
@@ -228,7 +226,7 @@ const PostDetail = () => {
     )
   }
 
-  const progress = (post.current_amount / post.goal_amount) * 100
+  const progress = (post.current_amount / post.goal_amount) * 100 //prgress bar equation
 
   return (
     <div className="postdetail-container">
@@ -332,7 +330,7 @@ const PostDetail = () => {
                 value={donationMessage}
                 onChange={(e) => setDonationMessage(e.target.value)}
                 rows="3"
-                placeholder="Leave a message of support (optional)"
+                placeholder="Leave a Message of Support (Optional)"
               ></textarea>
             </div>
             <button
@@ -366,11 +364,12 @@ const PostDetail = () => {
                     <span className="comment-author">
                       By:{' '}
                       {comment.userId
-                        ? `${comment.userId.first_name} ${comment.userId.last_name}`
+                        ? `${comment.userId.first_name} ${comment.userId.last_name}`//displaying the user first and last name if not unknownn
                         : 'Unknown User'}
                     </span>
                     <span className="comment-date">
-                      {new Date(comment.createdAt).toLocaleString()}
+                      {new Date(comment.createdAt).toLocaleString()} 
+                      {/* timestamp of the creation of the comment from the database, toLocalString converts the object into a string */}
                     </span>
                   </div>
 
@@ -407,14 +406,14 @@ const PostDetail = () => {
                     value={newCommentMessage}
                     onChange={(e) => setNewCommentMessage(e.target.value)}
                     rows="4"
-                    placeholder="Share your thoughts or support..."
+                    placeholder="Share Your Thoughts or Support!"
                     required
                   ></textarea>
                 </div>
                 <button
                   type="submit"
                   className="comment-submit-btn"
-                  disabled={submittingComment || !newCommentMessage.trim()}
+                  disabled={submittingComment || newCommentMessage === ''}
                 >
                   {submittingComment ? 'Posting Comment...' : 'Post Comment'}
                 </button>

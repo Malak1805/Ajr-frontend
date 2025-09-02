@@ -16,13 +16,9 @@ const Home = ({ postsUpdated }) => {
 
 
 
-  const fetchPosts = async () => {
+const fetchPosts = async () => {
     try {
-      const url = searchTerm
-        ? `${BASE_URL}/posts?search=${searchTerm}`
-        : `${BASE_URL}/posts`
-
-  const response = await axios.get(url)
+      const response = await axios.get(`${BASE_URL}/posts`) // fetch all posts
       setPosts(response.data.posts || response.data || [])
       setError(null)
     } catch (err) {
@@ -33,26 +29,28 @@ const Home = ({ postsUpdated }) => {
     }
   }
 
-
+  // Only fetching posts when postsUpdated changes, implemented search is client-side
   useEffect(() => {
     fetchPosts()
-  }, [postsUpdated, searchTerm]) 
+  }, [postsUpdated])
 
-   const handleSearch = (term) => {
-    setSearchTerm(term)
-  }
+  // Filtering posts based on search term client-side
+  const filteredPosts = posts.filter(post => {
+    const term = searchTerm.toLowerCase()
+    return (
+      post.title.toLowerCase().includes(term) ||
+      post.description.toLowerCase().includes(term) ||
+      (post.category && post.category.toLowerCase().includes(term))
+    )
+  })
 
-  if (loading) return <div className="loading-message">Loading posts...</div>
-  if (error) return <div className="error-message">{error}</div>
-
-const groupedPosts = posts.reduce((groups, post) => { //// Group posts by their category
-  const category = post.category || "Uncategorized"
-  if (!groups[category]) {
-    groups[category] = []
-  }
-  groups[category].push(post)
-  return groups
-}, {})
+  // grouped posts by category after filtering
+  const groupedPosts = filteredPosts.reduce((groups, post) => {
+    const category = post.category || 'Uncategorized'
+    if (!groups[category]) groups[category] = []
+    groups[category].push(post)
+    return groups
+  }, {})
 
   return (
       <div className="home-container">
@@ -63,7 +61,7 @@ const groupedPosts = posts.reduce((groups, post) => { //// Group posts by their 
         </Link>
       </div>
 
-      <Search onSearch={handleSearch} />
+      <Search onSearch={setSearchTerm} />
 
       {Object.keys(groupedPosts).length === 0 ? (
         <p className="no-posts-message posts-empty">No posts found.</p>
