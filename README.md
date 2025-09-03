@@ -5,7 +5,9 @@
 ###    BY: [Malak Jasim](https://github.com/Malak1805) | [LinkedIn](https://www.linkedin.com/in/malak-jasim-b518a1295/)
 ![img3](./img/AjrWebsiteLogo.webp)
 
-is a fundraising platform built using the MERN stack to support low-income individuals and those struggling financially. It provides a secure and easy to use environment where users can create fundraising posts, donate to campaigns, leave supportive comments, and manage their personal profiles.The goal of AJR is to connect donors and recipients, making the fundraising process transparent and accessible.
+## 🔗 [Deployed Link](https://ajr.surge.sh/)
+
+is a fundraising platform built using the MERN stack to support low-income individuals and those struggling financially. It provides a secure and easy to use environment where users can create fundraising posts, donate to campaigns posts, leave supportive comments, and manage their personal profiles.The goal of AJR is to connect donors and recipients, making the fundraising process transparent and accessible.
 
 ## 🚀 **Features**
 
@@ -17,7 +19,7 @@ is a fundraising platform built using the MERN stack to support low-income indiv
 
 - Support Comments: Leave encouraging comments on posts.
 
-- User Profiles: Each user has a profile showing their activity and posts.
+- User Profiles: Each user has a Profile Page
 
 - Responsive UI: Optimized for desktop and mobile devices.
 
@@ -68,3 +70,4 @@ is a fundraising platform built using the MERN stack to support low-income indiv
 - Multi-language support.
 
 ## **Credits**
+[W3schools](https://www.w3schools.com/) | [Geeksforgeeks](https://www.w3schools.com/) | [Github](https://github.com/Vivek-Kamboj/Crowd_funding)
