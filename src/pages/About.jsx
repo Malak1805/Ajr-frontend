@@ -50,14 +50,14 @@ return(
               <li className="feature-item">
                 <strong>Interactive Community:</strong>
                 <p className="feature-description">
-                  Supportive comments and engagement tools foster encouragement around each campaign.
+                  Supportive comments and engagement tools foster encouragement around each campaign post.
                 </p>
               </li>
               
               <li className="feature-item">
                 <strong>Personal Dashboards:</strong>
                 <p className="feature-description">
-                  Donors and recipients can manage campaigns, track donations, and monitor progress in real time.
+                  Donors and recipients can manage campaigns posts, track donations, and monitor progress in real time.
                 </p>
               </li>
             </ul>

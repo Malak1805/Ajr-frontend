@@ -6,6 +6,7 @@
 ![img3](./img/AjrWebsiteLogo.webp)
 
 ## 🔗 [Deployed Link](https://ajr.surge.sh/)
+## 🔗 [Backend Repo](https://github.com/Malak1805/Ajr-backend)
 
 is a fundraising platform built using the MERN stack to support low-income individuals and those struggling financially. It provides a secure and easy to use environment where users can create fundraising posts, donate to campaigns posts, leave supportive comments, and manage their personal profiles.The goal of AJR is to connect donors and recipients, making the fundraising process transparent and accessible.
 
