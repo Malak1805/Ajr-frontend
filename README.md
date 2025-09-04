@@ -71,4 +71,4 @@ is a fundraising platform built using the MERN stack to support low-income indiv
 - Multi-language support.
 
 ## **Credits**
-[W3schools](https://www.w3schools.com/) | [Geeksforgeeks](https://www.w3schools.com/) | [Github](https://github.com/Vivek-Kamboj/Crowd_funding)
+[W3schools](https://www.w3schools.com/) | [Geeksforgeeks](https://www.w3schools.com/) | [Github](https://github.com/Vivek-Kamboj/Crowd_funding)# MyBlog---frontend
